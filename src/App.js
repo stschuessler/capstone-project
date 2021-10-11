@@ -1,4 +1,5 @@
-import Card from './components/Card'
+import Clothe from './components/Clothe'
+import styled from 'styled-components/macro'
 
 import img1 from './images/bluse-floral.png'
 import img2 from './images/pullover-gruen.png'
