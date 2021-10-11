@@ -14,13 +14,14 @@ const INITIAL_DATA = [
 
 function App() {
   return (
-    <main>
+    <StyledMain>
       {INITIAL_DATA.map((data) => (
         <img src={data.imageUrl} alt="" />
       ))}
-      <Card key={INITIAL_DATA.id} />
-    </main>
+    </StyledMain>
   )
 }
+
+const StyledMain = styled.main``
 
 export default App
