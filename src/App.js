@@ -1,3 +1,5 @@
+import Card from './components/Card'
+
 import img1 from './images/bluse-floral.png'
 import img2 from './images/pullover-gruen.png'
 import img3 from './images/pullover-rosa.png'
@@ -12,11 +14,12 @@ const INITIAL_DATA = [
 
 function App() {
   return (
-    <div>
+    <main>
       {INITIAL_DATA.map((data) => (
         <img src={data.imageUrl} alt="" />
       ))}
-    </div>
+      <Card key={INITIAL_DATA.id} />
+    </main>
   )
 }
 
