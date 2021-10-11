@@ -11,13 +11,17 @@ const INITIAL_DATA = [
   { id: '2', imageUrl: img2 },
   { id: '3', imageUrl: img3 },
   { id: '4', imageUrl: img4 },
+  { id: '5', imageUrl: img1 },
+  { id: '6', imageUrl: img2 },
+  { id: '7', imageUrl: img3 },
+  { id: '8', imageUrl: img4 },
 ]
 
 function App() {
   return (
     <StyledMain>
       {INITIAL_DATA.map((data) => (
-        <img src={data.imageUrl} alt="" />
+        <Clothe key={data.id} imageUrl={data.imageUrl} />
       ))}
     </StyledMain>
   )
