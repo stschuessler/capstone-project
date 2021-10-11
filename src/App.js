@@ -1,20 +1,21 @@
+import img1 from './images/bluse-floral.png'
+import img2 from './images/pullover-gruen.png'
+import img3 from './images/pullover-rosa.png'
+import img4 from './images/t-shirt-floral.png'
+
+const INITIAL_DATA = [
+  { id: '1', imageUrl: img1 },
+  { id: '2', imageUrl: img2 },
+  { id: '3', imageUrl: img3 },
+  { id: '4', imageUrl: img4 },
+]
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {INITIAL_DATA.map((data) => (
+        <img src={data.imageUrl} alt="" />
+      ))}
     </div>
   )
 }
