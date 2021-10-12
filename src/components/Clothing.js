@@ -1,21 +1,33 @@
+import { useState } from 'react'
 import styled from 'styled-components/macro'
 
 function Clothing({ titel, color, pattern, material, fitting, imageUrl }) {
+  const [showDetails, setShowDetails] = useState(false)
+
   return (
     <section>
       <button
         onClick={() => {
-          alert('it is working')
+          if (showDetails) {
+            setShowDetails(false)
+          } else {
+            setShowDetails(true)
+          }
         }}
       >
         <StyledImage src={imageUrl} alt="" />
       </button>
-
-      <h2>{titel}</h2>
-      <p>Farbe: {color}</p>
-      <p>Muster: {pattern}</p>
-      <p>Material: {material}</p>
-      <p>Passform: {fitting}</p>
+      {showDetails ? (
+        <div>
+          <h2>{titel}</h2>
+          <p>Farbe: {color}</p>
+          <p>Muster: {pattern}</p>
+          <p>Material: {material}</p>
+          <p>Passform: {fitting}</p>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </section>
   )
 }
