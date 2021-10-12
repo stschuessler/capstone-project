@@ -5,8 +5,16 @@ import data from './mockup-data'
 function App() {
   return (
     <StyledMain>
-      {INITIAL_DATA.map((data) => (
-        <Clothing key={data.id} imageUrl={data.imageUrl} />
+      {data.map((data) => (
+        <Clothing
+          key={data.id}
+          titel={data.titel}
+          color={data.color}
+          pattern={data.pattern}
+          material={data.material}
+          fitting={data.fitting}
+          imageUrl={data.imageUrl}
+        />
       ))}
     </StyledMain>
   )
