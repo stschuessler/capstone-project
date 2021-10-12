@@ -1,7 +1,3 @@
-// import img1 from './images/bluse-floral.png'
-// import img2 from './images/pullover-gruen.png'
-// import img3 from './images/pullover-rosa.png'
-// import img4 from './images/t-shirt-floral.png'
 import Clothing from './components/Clothing'
 import styled from 'styled-components/macro'
 
@@ -15,7 +11,6 @@ const INITIAL_DATA = [
   { id: '7', imageUrl: '/images/pullover-rosa.png' },
   { id: '8', imageUrl: '/images/t-shirt-floral.png' },
 ]
-console.log(INITIAL_DATA)
 
 function App() {
   return (
