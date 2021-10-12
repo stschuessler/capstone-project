@@ -3,6 +3,7 @@
 // import img3 from './images/pullover-rosa.png'
 // import img4 from './images/t-shirt-floral.png'
 import Clothing from './components/Clothing'
+import styled from 'styled-components/macro'
 
 const INITIAL_DATA = [
   { id: '1', imageUrl: '/images/bluse-floral.png' },
@@ -18,12 +19,17 @@ console.log(INITIAL_DATA)
 
 function App() {
   return (
-    <main>
+    <StyledMain>
       {INITIAL_DATA.map((data) => (
         <Clothing key={data.id} imageUrl={data.imageUrl} />
       ))}
-    </main>
+    </StyledMain>
   )
 }
+
+const StyledMain = styled.main`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
 
 export default App
