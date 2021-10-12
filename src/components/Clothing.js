@@ -1,7 +1,15 @@
 import styled from 'styled-components/macro'
 
 function Clothing({ imageUrl }) {
-  return <StyledImage src={imageUrl} alt="" />
+  return (
+    <button
+      onClick={() => {
+        alert('it is working')
+      }}
+    >
+      <StyledImage src={imageUrl} alt="" />
+    </button>
+  )
 }
 
 const StyledImage = styled.img`
