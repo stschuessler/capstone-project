@@ -1,19 +1,19 @@
 import { render, screen } from '@testing-library/react'
-import Clothe from './Clothe'
+import Clothing from './Clothing'
 
-describe('Clothe', () => {
+describe('Clothing', () => {
   const imageUrl = 'http://hp-api.herokuapp.com/images/harry.jpg'
 
   it('has an image', () => {
-    render(<Clothe imageUrl={imageUrl} />)
+    render(<Clothing imageUrl={imageUrl} />)
 
     const img = screen.getByRole('img')
 
     expect(img).toBeInTheDocument()
   })
 
-  it('has a alt text', () => {
-    render(<Clothe imageUrl={imageUrl} />)
+  it('has an alt attribute', () => {
+    render(<Clothing imageUrl={imageUrl} />)
 
     const url = screen.getByAltText('')
 

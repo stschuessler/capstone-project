@@ -1,10 +1,8 @@
-import Clothe from './components/Clothe'
-import styled from 'styled-components/macro'
-
 import img1 from './images/bluse-floral.png'
 import img2 from './images/pullover-gruen.png'
 import img3 from './images/pullover-rosa.png'
 import img4 from './images/t-shirt-floral.png'
+import Clothing from './components/Clothing'
 
 const INITIAL_DATA = [
   { id: '1', imageUrl: img1 },
@@ -19,14 +17,12 @@ const INITIAL_DATA = [
 
 function App() {
   return (
-    <StyledMain>
+    <main>
       {INITIAL_DATA.map((data) => (
-        <Clothe key={data.id} imageUrl={data.imageUrl} />
+        <Clothing key={data.id} imageUrl={data.imageUrl} />
       ))}
-    </StyledMain>
+    </main>
   )
 }
-
-const StyledMain = styled.main``
 
 export default App
