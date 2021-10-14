@@ -8,7 +8,12 @@ export default {
 
 const Template = (args) => <Clothing {...args} />
 
-export const SmallImage = Template.bind({})
-SmallImage.args = {
+export const Button = Template.bind({})
+Button.args = {
+  title: 'Bluse',
+  color: 'grau',
+  pattern: 'floral',
+  material: 'Leinen',
+  fitting: 'Lose Fit',
   imageUrl: '/images/bluse-floral.png',
 }
