@@ -5,42 +5,31 @@ function Clothing({ title, color, pattern, material, fitting, imageUrl }) {
   const [showDetails, setShowDetails] = useState(false)
 
   return (
-    <StyledSection>
+    <StyledSection showDetails={showDetails}>
       <StyledButton
-        showDetails={showDetails}
         onClick={() => {
-          if (showDetails) {
-            setShowDetails(false)
-          } else {
-            setShowDetails(true)
-          }
+          setShowDetails(!showDetails)
         }}
       >
         <StyledImage src={imageUrl} alt="" />
-        {showDetails ? (
-          <StyledWrapper>
-            <h2>{title}</h2>
-            <p>Farbe: {color}</p>
-            <p>Muster: {pattern}</p>
-            <p>Material: {material}</p>
-            <p>Passform: {fitting}</p>
-          </StyledWrapper>
-        ) : (
-          <div></div>
-        )}
       </StyledButton>
+      {showDetails && (
+        <StyledWrapper>
+          <h2>{title}</h2>
+          <p>Farbe: {color}</p>
+          <p>Muster: {pattern}</p>
+          <p>Material: {material}</p>
+          <p>Passform: {fitting}</p>
+        </StyledWrapper>
+      )}
     </StyledSection>
   )
 }
 
 const StyledSection = styled.section`
   overflow: ${({ showDetails }) => (showDetails ? 'hidden' : 'auto')};
-`
-
-const StyledButton = styled.button`
-  border: none;
   background: white;
-
+  padding: 4px;
   ${({ showDetails }) =>
     showDetails &&
     css`
@@ -53,21 +42,26 @@ const StyledButton = styled.button`
     `}
 `
 
+const StyledButton = styled.button`
+  border: none;
+  background: white;
+`
+
 const StyledImage = styled.img`
   width: 100%;
-  border: solid 0.1px rgba(0, 0, 0, 0.2);
+  border: var(--default-border);
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--default-shadow);
   padding: 2px;
-  margin: 2px;
 `
 
 const StyledWrapper = styled.div`
-  border: solid 0.1px rgba(0, 0, 0, 0.2);
+  border: var(--default-border);
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--default-shadow);
   padding: 2px;
   margin: 2px;
+  text-align: center;
 `
 
 export default Clothing

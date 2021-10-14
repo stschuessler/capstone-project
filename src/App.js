@@ -23,6 +23,8 @@ function App() {
 const StyledMain = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 2px 16px 2px 2px;
+  gap: 4px;
 `
 
 export default App
