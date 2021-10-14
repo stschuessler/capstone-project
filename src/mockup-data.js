@@ -1,7 +1,7 @@
 const INITIAL_DATA = [
   {
     id: '1',
-    titel: 'Bluse',
+    title: 'Bluse',
     color: 'grau',
     pattern: 'floral',
     material: 'Leinen',
@@ -10,7 +10,7 @@ const INITIAL_DATA = [
   },
   {
     id: '2',
-    titel: 'Pullover',
+    title: 'Pullover',
     color: 'grün',
     pattern: 'einfarbig',
     material: 'Wolle',
@@ -19,7 +19,7 @@ const INITIAL_DATA = [
   },
   {
     id: '3',
-    titel: 'Pullover',
+    title: 'Pullover',
     color: 'pink',
     pattern: 'einfarbig',
     material: 'Baumwolle',
@@ -28,7 +28,7 @@ const INITIAL_DATA = [
   },
   {
     id: '4',
-    titel: 'T-Shirt',
+    title: 'T-Shirt',
     color: 'weiß',
     pattern: 'floral',
     material: 'Baumwolle',
@@ -37,7 +37,7 @@ const INITIAL_DATA = [
   },
   {
     id: '5',
-    titel: 'Bluse',
+    title: 'Bluse',
     color: 'grau',
     pattern: 'floral',
     material: 'Leinen',
@@ -46,7 +46,7 @@ const INITIAL_DATA = [
   },
   {
     id: '6',
-    titel: 'Pullover',
+    title: 'Pullover',
     color: 'grün',
     pattern: 'einfarbig',
     material: 'Wolle',
@@ -55,7 +55,7 @@ const INITIAL_DATA = [
   },
   {
     id: '7',
-    titel: 'Pullover',
+    title: 'Pullover',
     color: 'pink',
     pattern: 'einfarbig',
     material: 'Baumwolle',
@@ -64,7 +64,7 @@ const INITIAL_DATA = [
   },
   {
     id: '8',
-    titel: 'T-Shirt',
+    title: 'T-Shirt',
     color: 'weiß',
     pattern: 'floral',
     material: 'Baumwolle',

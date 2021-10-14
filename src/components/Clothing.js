@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled, { css } from 'styled-components/macro'
 
-function Clothing({ titel, color, pattern, material, fitting, imageUrl }) {
+function Clothing({ title, color, pattern, material, fitting, imageUrl }) {
   const [showDetails, setShowDetails] = useState(false)
 
   return (
@@ -19,7 +19,7 @@ function Clothing({ titel, color, pattern, material, fitting, imageUrl }) {
         <StyledImage src={imageUrl} alt="" />
         {showDetails ? (
           <StyledWrapper>
-            <h2>{titel}</h2>
+            <h2>{title}</h2>
             <p>Farbe: {color}</p>
             <p>Muster: {pattern}</p>
             <p>Material: {material}</p>

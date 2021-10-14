@@ -8,7 +8,7 @@ function App() {
       {data.map((data) => (
         <Clothing
           key={data.id}
-          titel={data.titel}
+          title={data.title}
           color={data.color}
           pattern={data.pattern}
           material={data.material}

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 import Clothing from './Clothing'
 
 describe('Clothing', () => {
-  const titel = 'Hose'
+  const title = 'Hose'
   const color = 'blau'
   const pattern = 'gestreift'
   const material = 'Jeansstoff'
@@ -37,7 +37,7 @@ describe('Clothing', () => {
   it('it does not render any html elements', () => {
     render(
       <Clothing
-        titel={titel}
+        title={title}
         color={color}
         pattern={pattern}
         material={material}
@@ -45,13 +45,13 @@ describe('Clothing', () => {
         imageUrl={imageUrl}
       />,
     )
-    const clothingTitel = screen.queryByRole('header')
+    const clothingTitle = screen.queryByRole('header')
     const clothingColor = screen.queryByText('Farbe: blau')
     const clothingPattern = screen.queryByText('Muster: gestreift')
     const clothingMaterial = screen.queryByText('Material: Jeansstoff')
     const clothingFitting = screen.queryByText('Passform: figurbetont')
 
-    expect(clothingTitel).not.toBeInTheDocument()
+    expect(clothingTitle).not.toBeInTheDocument()
     expect(clothingColor).not.toBeInTheDocument()
     expect(clothingPattern).not.toBeInTheDocument()
     expect(clothingMaterial).not.toBeInTheDocument()
@@ -61,7 +61,7 @@ describe('Clothing', () => {
   it('it renders all html elements by clicking button', () => {
     render(
       <Clothing
-        titel={titel}
+        title={title}
         color={color}
         pattern={pattern}
         material={material}
@@ -73,13 +73,13 @@ describe('Clothing', () => {
     const imageButton = screen.getByRole('button')
     userEvent.click(imageButton)
 
-    const clothingTitel = screen.getByText('Hose')
+    const clothingTitle = screen.getByText('Hose')
     const clothingColor = screen.getByText('Farbe: blau')
     const clothingPattern = screen.getByText('Muster: gestreift')
     const clothingMaterial = screen.getByText('Material: Jeansstoff')
     const clothingFitting = screen.getByText('Passform: figurbetont')
 
-    expect(clothingTitel).toBeInTheDocument()
+    expect(clothingTitle).toBeInTheDocument()
     expect(clothingColor).toBeInTheDocument()
     expect(clothingPattern).toBeInTheDocument()
     expect(clothingMaterial).toBeInTheDocument()
