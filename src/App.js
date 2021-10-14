@@ -1,22 +1,20 @@
 import Clothing from './components/Clothing'
 import styled from 'styled-components/macro'
-
-const INITIAL_DATA = [
-  { id: '1', imageUrl: '/images/bluse-floral.png' },
-  { id: '2', imageUrl: '/images/pullover-gruen.png' },
-  { id: '3', imageUrl: '/images/pullover-rosa.png' },
-  { id: '4', imageUrl: '/images/t-shirt-floral.png' },
-  { id: '5', imageUrl: '/images/bluse-floral.png' },
-  { id: '6', imageUrl: '/images/pullover-gruen.png' },
-  { id: '7', imageUrl: '/images/pullover-rosa.png' },
-  { id: '8', imageUrl: '/images/t-shirt-floral.png' },
-]
+import data from './mockup-data'
 
 function App() {
   return (
     <StyledMain>
-      {INITIAL_DATA.map((data) => (
-        <Clothing key={data.id} imageUrl={data.imageUrl} />
+      {data.map((data) => (
+        <Clothing
+          key={data.id}
+          title={data.title}
+          color={data.color}
+          pattern={data.pattern}
+          material={data.material}
+          fitting={data.fitting}
+          imageUrl={data.imageUrl}
+        />
       ))}
     </StyledMain>
   )
@@ -25,6 +23,8 @@ function App() {
 const StyledMain = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 2px 16px 2px 2px;
+  gap: 4px;
 `
 
 export default App
