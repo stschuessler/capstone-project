@@ -10,10 +10,18 @@ describe('Clothing', () => {
   const fitting = 'figurbetont'
   const imageUrl = 'http://hp-api.herokuapp.com/images/harry.jpg'
 
-  it('has an image', () => {
+  it('has an bokmark image', () => {
     render(<Clothing imageUrl={imageUrl} />)
 
-    const img = screen.getByRole('img')
+    const img = screen.getByAltText('bookmark')
+
+    expect(img).toBeInTheDocument()
+  })
+
+  it('has an clothing image', () => {
+    render(<Clothing imageUrl={imageUrl} />)
+
+    const img = screen.getByAltText('')
 
     expect(img).toBeInTheDocument()
   })
@@ -26,12 +34,12 @@ describe('Clothing', () => {
     expect(url).toBeInTheDocument()
   })
 
-  it('has a button', () => {
+  it('has two buttons', () => {
     render(<Clothing imageUrl={imageUrl} />)
 
-    const imageButton = screen.getByRole('button')
+    const imageButton = screen.getAllByRole('button')
 
-    expect(imageButton).toBeInTheDocument()
+    expect(imageButton).toHaveLength(2)
   })
 
   it('it does not render any html elements', () => {
@@ -70,7 +78,7 @@ describe('Clothing', () => {
       />,
     )
 
-    const imageButton = screen.getByRole('button')
+    const imageButton = screen.getByLabelText('clothing-button')
     userEvent.click(imageButton)
 
     const clothingTitle = screen.getByText('Hose')
