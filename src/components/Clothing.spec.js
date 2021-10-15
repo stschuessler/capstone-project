@@ -13,7 +13,7 @@ describe('Clothing', () => {
   it('has an bokmark image', () => {
     render(<Clothing imageUrl={imageUrl} />)
 
-    const img = screen.getByAltText('bookmark')
+    const img = screen.getByAltText('Bookmark clothing')
 
     expect(img).toBeInTheDocument()
   })
@@ -42,7 +42,7 @@ describe('Clothing', () => {
     expect(imageButton).toHaveLength(2)
   })
 
-  it('it does not render any html elements', () => {
+  it('does not render any html elements', () => {
     render(
       <Clothing
         title={title}
@@ -78,7 +78,7 @@ describe('Clothing', () => {
       />,
     )
 
-    const imageButton = screen.getByLabelText('clothing-button')
+    const imageButton = screen.getByRole('button', { name: 'Show details' })
     userEvent.click(imageButton)
 
     const clothingTitle = screen.getByText('Hose')

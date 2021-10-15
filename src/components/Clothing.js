@@ -9,7 +9,7 @@ function Clothing({ title, color, pattern, material, fitting, imageUrl }) {
     <StyledSection showDetails={showDetails}>
       <Bookmark />
       <StyledButton
-        aria-label="clothing-button"
+        aria-label={showDetails ? 'Hide details' : 'Show details'}
         onClick={() => {
           setShowDetails(!showDetails)
         }}
