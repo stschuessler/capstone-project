@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import styled, { css } from 'styled-components/macro'
+import Bookmark from './Bookmark'
 
 function Clothing({ title, color, pattern, material, fitting, imageUrl }) {
   const [showDetails, setShowDetails] = useState(false)
 
   return (
     <StyledSection showDetails={showDetails}>
+      <Bookmark />
       <StyledButton
+        aria-label={showDetails ? 'Hide details' : 'Show details'}
         onClick={() => {
           setShowDetails(!showDetails)
         }}
@@ -30,6 +33,7 @@ const StyledSection = styled.section`
   overflow: ${({ showDetails }) => (showDetails ? 'hidden' : 'auto')};
   background: white;
   padding: 4px;
+  position: relative;
   ${({ showDetails }) =>
     showDetails &&
     css`
