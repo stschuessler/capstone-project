@@ -11,9 +11,9 @@ function Bookmark() {
       }}
     >
       {!bookmarkNotActiv ? (
-        <img src="/images/bookmark.png" alt="" />
+        <img src="/images/bookmark.png" alt="bookmark" />
       ) : (
-        <img src="/images/bookmark-active.png" alt="" />
+        <img src="/images/bookmark-active.png" alt="active bookmark" />
       )}
     </StyledButton>
   )
@@ -29,4 +29,5 @@ const StyledButton = styled.button`
 
 export default Bookmark
 
+// Icon Download:
 // https://www.flaticon.com/premium-icon/bookmarks_3032982?term=bookmark&page=1&position=44&page=1&position=44&related_id=3032982&origin=search
