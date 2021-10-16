@@ -1,8 +1,17 @@
 import Clothing from './components/Clothing'
 import styled from 'styled-components/macro'
-import data from './mockup-data'
+import mockupData from './mockup-data'
 
 function App() {
+  let data
+
+  if (localStorage.getItem('localClothing')) {
+    data = JSON.parse(localStorage.getItem('localClothing'))
+  } else {
+    localStorage.setItem('localClothing', JSON.stringify(mockupData))
+    data = JSON.parse(localStorage.getItem('localClothing'))
+  }
+
   return (
     <StyledMain>
       {data.map((data) => (
