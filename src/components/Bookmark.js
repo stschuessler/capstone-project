@@ -7,8 +7,21 @@ function Bookmark({ data, id, isBookmarked }) {
   return (
     <StyledButton
       onClick={() => {
+        // const changedEntry = data.find((item) => item.id === id)    // changedEntry entspricht bookmarkActive
+        // changedEntry.isBookmarked = !isBookmarked
         bookmarkActive.isBookmarked = !isBookmarked
 
+        const index = data.findIndex((card) => card.id === id)
+
+        localStorage.setItem(
+          'localClothing',
+          JSON.stringify([
+            ...data.slice(0, index),
+            // changedEntry,      // naming Question: Was ist für den Code-reviewer verständlicher? changedEntry oder bookmarkActive?
+            bookmarkActive,
+            ...data.slice(index + 1),
+          ]),
+        )
         setActive(!active)
       }}
     >
