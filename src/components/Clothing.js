@@ -12,11 +12,17 @@ function Clothing({
   fitting,
   imageUrl,
   isBookmarked,
+  onClickBookmark,
 }) {
   const [showDetails, setShowDetails] = useState(false)
   return (
     <StyledSection showDetails={showDetails}>
-      <Bookmark data={data} id={id} isBookmarked={isBookmarked} />
+      <Bookmark
+        data={data}
+        id={id}
+        isBookmarked={isBookmarked}
+        onClickBookmark={onClickBookmark}
+      />
       <StyledButton
         aria-label={showDetails ? 'Hide details' : 'Show details'}
         onClick={() => {

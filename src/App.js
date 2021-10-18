@@ -12,6 +12,19 @@ function App() {
     data = JSON.parse(localStorage.getItem('localClothing'))
   }
 
+  const handleBookmark = (bookmarkActive) => {
+    const index = data.findIndex((card) => card.id === bookmarkActive.id)
+
+    localStorage.setItem(
+      'localClothing',
+      JSON.stringify([
+        ...data.slice(0, index),
+        bookmarkActive,
+        ...data.slice(index + 1),
+      ]),
+    )
+  }
+
   return (
     <StyledMain>
       {data.map((item) => (
@@ -26,6 +39,7 @@ function App() {
           fitting={item.fitting}
           imageUrl={item.imageUrl}
           isBookmarked={item.isBookmarked}
+          onClickBookmark={handleBookmark}
         />
       ))}
     </StyledMain>

@@ -1,30 +1,18 @@
 import { useState } from 'react'
 import styled from 'styled-components/macro'
 
-function Bookmark({ data, id, isBookmarked }) {
+function Bookmark({ data, id, isBookmarked, onClickBookmark }) {
   let bookmarkActive = data.find((item) => item.id === id)
   const [active, setActive] = useState(bookmarkActive.isBookmarked)
+
+  const handleBookmark = () => {
+    bookmarkActive.isBookmarked = !isBookmarked
+    onClickBookmark(bookmarkActive)
+    setActive(!active)
+  }
+
   return (
-    <StyledButton
-      onClick={() => {
-        // const changedEntry = data.find((item) => item.id === id)    // changedEntry entspricht bookmarkActive
-        // changedEntry.isBookmarked = !isBookmarked
-        bookmarkActive.isBookmarked = !isBookmarked
-
-        const index = data.findIndex((card) => card.id === id)
-
-        localStorage.setItem(
-          'localClothing',
-          JSON.stringify([
-            ...data.slice(0, index),
-            // changedEntry,      // naming Question: Was ist für den Code-reviewer verständlicher? changedEntry oder bookmarkActive?
-            bookmarkActive,
-            ...data.slice(index + 1),
-          ]),
-        )
-        setActive(!active)
-      }}
-    >
+    <StyledButton onClick={() => handleBookmark()}>
       {!active ? (
         <img src="/images/bookmark.png" alt="Bookmark clothing" />
       ) : (
