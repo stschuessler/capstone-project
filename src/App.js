@@ -2,14 +2,16 @@ import Clothing from './components/Clothing'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
+import saveToLocal from './lib/saveToLocal'
+import loadFromLocal from './lib/loadFromLocal'
 
 function App() {
   const [clothes, setClothes] = useState(() => {
-    if (localStorage.getItem('localClothing')) {
-      return JSON.parse(localStorage.getItem('localClothing'))
+    if (loadFromLocal('localClothing')) {
+      return loadFromLocal('localClothing')
     } else {
-      localStorage.setItem('localClothing', JSON.stringify(mockupData))
-      return JSON.parse(localStorage.getItem('localClothing'))
+      saveToLocal('localClothing', mockupData)
+      return loadFromLocal('localClothing')
     }
   })
 
@@ -23,7 +25,7 @@ function App() {
     ]
 
     setClothes(newClothingArray)
-    localStorage.setItem('localClothing', JSON.stringify(newClothingArray))
+    saveToLocal('localClothing', newClothingArray)
   }
 
   return (
