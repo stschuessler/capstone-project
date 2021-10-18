@@ -14,15 +14,18 @@ function App() {
 
   return (
     <StyledMain>
-      {data.map((data) => (
+      {data.map((item) => (
         <Clothing
-          key={data.id}
-          title={data.title}
-          color={data.color}
-          pattern={data.pattern}
-          material={data.material}
-          fitting={data.fitting}
-          imageUrl={data.imageUrl}
+          data={data}
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          color={item.color}
+          pattern={item.pattern}
+          material={item.material}
+          fitting={item.fitting}
+          imageUrl={item.imageUrl}
+          isBookmarked={item.isBookmarked}
         />
       ))}
     </StyledMain>

@@ -2,12 +2,21 @@ import { useState } from 'react'
 import styled, { css } from 'styled-components/macro'
 import Bookmark from './Bookmark'
 
-function Clothing({ title, color, pattern, material, fitting, imageUrl }) {
+function Clothing({
+  data,
+  id,
+  title,
+  color,
+  pattern,
+  material,
+  fitting,
+  imageUrl,
+  isBookmarked,
+}) {
   const [showDetails, setShowDetails] = useState(false)
-
   return (
     <StyledSection showDetails={showDetails}>
-      <Bookmark />
+      <Bookmark data={data} id={id} isBookmarked={isBookmarked} />
       <StyledButton
         aria-label={showDetails ? 'Hide details' : 'Show details'}
         onClick={() => {

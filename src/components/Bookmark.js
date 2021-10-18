@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import styled from 'styled-components/macro'
 
-function Bookmark() {
-  const [active, setActive] = useState(false)
-
+function Bookmark({ data, id, isBookmarked }) {
+  let bookmarkActive = data.find((item) => item.id === id)
+  const [active, setActive] = useState(bookmarkActive.isBookmarked)
   return (
     <StyledButton
       onClick={() => {
+        bookmarkActive.isBookmarked = !isBookmarked
+
         setActive(!active)
       }}
     >
