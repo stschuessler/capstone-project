@@ -15,12 +15,12 @@ function App() {
     }
   })
 
-  const handleBookmark = (bookmarkActive) => {
-    const index = clothes.findIndex((card) => card.id === bookmarkActive.id)
+  const handleBookmark = (activeBookmark) => {
+    const index = clothes.findIndex((card) => card.id === activeBookmark.id)
 
     const newClothingArray = [
       ...clothes.slice(0, index),
-      bookmarkActive,
+      activeBookmark,
       ...clothes.slice(index + 1),
     ]
 

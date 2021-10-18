@@ -2,12 +2,12 @@ import { useState } from 'react'
 import styled from 'styled-components/macro'
 
 function Bookmark({ clothes, id, isBookmarked, onClickBookmark }) {
-  const bookmarkActive = clothes.find((item) => item.id === id)
-  const [active, setActive] = useState(bookmarkActive.isBookmarked)
+  const activeBookmark = clothes.find((item) => item.id === id)
+  const [active, setActive] = useState(activeBookmark.isBookmarked)
 
   const handleBookmark = () => {
-    bookmarkActive.isBookmarked = !isBookmarked
-    onClickBookmark(bookmarkActive)
+    activeBookmark.isBookmarked = !isBookmarked
+    onClickBookmark(activeBookmark)
     setActive(!active)
   }
 
