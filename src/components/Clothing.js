@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/macro'
 import Bookmark from './Bookmark'
 
 function Clothing({
-  data,
+  clothes,
   id,
   title,
   color,
@@ -18,7 +18,7 @@ function Clothing({
   return (
     <StyledSection showDetails={showDetails}>
       <Bookmark
-        data={data}
+        clothes={clothes}
         id={id}
         isBookmarked={isBookmarked}
         onClickBookmark={onClickBookmark}

@@ -1,35 +1,36 @@
 import Clothing from './components/Clothing'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
+import { useState } from 'react'
 
 function App() {
-  let data
-
-  if (localStorage.getItem('localClothing')) {
-    data = JSON.parse(localStorage.getItem('localClothing'))
-  } else {
-    localStorage.setItem('localClothing', JSON.stringify(mockupData))
-    data = JSON.parse(localStorage.getItem('localClothing'))
-  }
+  const [clothes, setClothes] = useState(() => {
+    if (localStorage.getItem('localClothing')) {
+      return JSON.parse(localStorage.getItem('localClothing'))
+    } else {
+      localStorage.setItem('localClothing', JSON.stringify(mockupData))
+      return JSON.parse(localStorage.getItem('localClothing'))
+    }
+  })
 
   const handleBookmark = (bookmarkActive) => {
-    const index = data.findIndex((card) => card.id === bookmarkActive.id)
+    const index = clothes.findIndex((card) => card.id === bookmarkActive.id)
 
-    localStorage.setItem(
-      'localClothing',
-      JSON.stringify([
-        ...data.slice(0, index),
-        bookmarkActive,
-        ...data.slice(index + 1),
-      ]),
-    )
+    const newClothingArray = [
+      ...clothes.slice(0, index),
+      bookmarkActive,
+      ...clothes.slice(index + 1),
+    ]
+
+    setClothes(newClothingArray)
+    localStorage.setItem('localClothing', JSON.stringify(newClothingArray))
   }
 
   return (
     <StyledMain>
-      {data.map((item) => (
+      {clothes.map((item) => (
         <Clothing
-          data={data}
+          clothes={clothes}
           key={item.id}
           id={item.id}
           title={item.title}
