@@ -15,14 +15,29 @@ function App() {
     }
   })
 
-  const handleBookmark = (activeBookmark) => {
-    const index = clothes.findIndex((card) => card.id === activeBookmark.id)
+  const handleBookmark = (id) => {
+    const index = clothes.findIndex((card) => card.id === id)
+    const cloth = clothes.find((card) => card.id === id)
 
     const newClothingArray = [
       ...clothes.slice(0, index),
-      activeBookmark,
+      {
+        ...cloth,
+        isBookmarked: !cloth.isBookmarked,
+      },
       ...clothes.slice(index + 1),
     ]
+
+    // const newClothingArray = clothes.map((cloth) => {
+    //   if (card.id === id) {
+    //     return {
+    //       ...cloth,
+    //       isBookmarked: !cloth.isBookmarked,
+    //     }
+    //   } else {
+    //     return cloth
+    //   }
+    // })
 
     setClothes(newClothingArray)
     saveToLocal('localClothing', newClothingArray)

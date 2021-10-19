@@ -1,19 +1,10 @@
 import { useState } from 'react'
 import styled from 'styled-components/macro'
 
-function Bookmark({ clothes, id, isBookmarked, onClickBookmark }) {
-  const activeBookmark = clothes.find((item) => item.id === id)
-  const [active, setActive] = useState(activeBookmark.isBookmarked)
-
-  const handleBookmark = () => {
-    activeBookmark.isBookmarked = !isBookmarked
-    onClickBookmark(activeBookmark)
-    setActive(!active)
-  }
-
+function Bookmark({ id, isBookmarked, onClickBookmark }) {
   return (
-    <StyledButton onClick={() => handleBookmark()}>
-      {!active ? (
+    <StyledButton onClick={() => onClickBookmark(id)}>
+      {!isBookmarked ? (
         <img src="/images/bookmark.png" alt="Bookmark clothing" />
       ) : (
         <img src="/images/bookmark-active.png" alt="Remove bookmark" />
