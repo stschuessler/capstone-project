@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled from 'styled-components/macro'
 
 function Bookmark({ id, isBookmarked, onClickBookmark }) {
