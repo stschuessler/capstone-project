@@ -1,19 +1,63 @@
 import Clothing from './components/Clothing'
 import styled from 'styled-components/macro'
-import data from './mockup-data'
+import mockupData from './mockup-data'
+import { useState } from 'react'
+import saveToLocal from './lib/saveToLocal'
+import loadFromLocal from './lib/loadFromLocal'
 
 function App() {
+  const [clothes, setClothes] = useState(() => {
+    if (loadFromLocal('localClothing')) {
+      return loadFromLocal('localClothing')
+    } else {
+      saveToLocal('localClothing', mockupData)
+      return loadFromLocal('localClothing')
+    }
+  })
+
+  const handleBookmark = (id) => {
+    const index = clothes.findIndex((card) => card.id === id)
+    const cloth = clothes.find((card) => card.id === id)
+
+    const newClothingArray = [
+      ...clothes.slice(0, index),
+      {
+        ...cloth,
+        isBookmarked: !cloth.isBookmarked,
+      },
+      ...clothes.slice(index + 1),
+    ]
+
+    // const newClothingArray = clothes.map((cloth) => {
+    //   if (card.id === id) {
+    //     return {
+    //       ...cloth,
+    //       isBookmarked: !cloth.isBookmarked,
+    //     }
+    //   } else {
+    //     return cloth
+    //   }
+    // })
+
+    setClothes(newClothingArray)
+    saveToLocal('localClothing', newClothingArray)
+  }
+
   return (
     <StyledMain>
-      {data.map((data) => (
+      {clothes.map((item) => (
         <Clothing
-          key={data.id}
-          title={data.title}
-          color={data.color}
-          pattern={data.pattern}
-          material={data.material}
-          fitting={data.fitting}
-          imageUrl={data.imageUrl}
+          clothes={clothes}
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          color={item.color}
+          pattern={item.pattern}
+          material={item.material}
+          fitting={item.fitting}
+          imageUrl={item.imageUrl}
+          isBookmarked={item.isBookmarked}
+          onClickBookmark={handleBookmark}
         />
       ))}
     </StyledMain>

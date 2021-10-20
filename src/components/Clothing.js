@@ -2,12 +2,25 @@ import { useState } from 'react'
 import styled, { css } from 'styled-components/macro'
 import Bookmark from './Bookmark'
 
-function Clothing({ title, color, pattern, material, fitting, imageUrl }) {
+function Clothing({
+  id,
+  title,
+  color,
+  pattern,
+  material,
+  fitting,
+  imageUrl,
+  isBookmarked,
+  onClickBookmark,
+}) {
   const [showDetails, setShowDetails] = useState(false)
-
   return (
     <StyledSection showDetails={showDetails}>
-      <Bookmark />
+      <Bookmark
+        id={id}
+        isBookmarked={isBookmarked}
+        onClickBookmark={onClickBookmark}
+      />
       <StyledButton
         aria-label={showDetails ? 'Hide details' : 'Show details'}
         onClick={() => {
@@ -47,6 +60,7 @@ const StyledSection = styled.section`
 `
 
 const StyledButton = styled.button`
+  width: 100%;
   border: none;
   background: white;
 `
