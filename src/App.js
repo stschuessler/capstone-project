@@ -28,17 +28,6 @@ function App() {
       ...clothes.slice(index + 1),
     ]
 
-    // const newClothingArray = clothes.map((cloth) => {
-    //   if (card.id === id) {
-    //     return {
-    //       ...cloth,
-    //       isBookmarked: !cloth.isBookmarked,
-    //     }
-    //   } else {
-    //     return cloth
-    //   }
-    // })
-
     setClothes(newClothingArray)
     saveToLocal('localClothing', newClothingArray)
   }
