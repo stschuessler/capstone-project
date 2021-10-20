@@ -60,6 +60,7 @@ const StyledSection = styled.section`
 `
 
 const StyledButton = styled.button`
+  width: 100%;
   border: none;
   background: white;
 `
