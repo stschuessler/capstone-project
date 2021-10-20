@@ -9,9 +9,11 @@ describe('Clothing', () => {
   const material = 'Jeansstoff'
   const fitting = 'figurbetont'
   const imageUrl = 'http://hp-api.herokuapp.com/images/harry.jpg'
+  const isBookmarked = false
+  const mockHandleBookmark = jest.fn()
 
-  it('has an bokmark image', () => {
-    render(<Clothing imageUrl={imageUrl} />)
+  it('has an bookmark image', () => {
+    render(<Clothing />)
 
     const img = screen.getByAltText('Bookmark clothing')
 
