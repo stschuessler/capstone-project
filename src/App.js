@@ -32,24 +32,34 @@ function App() {
     saveToLocal('localClothing', newClothingArray)
   }
 
+  function onClickFilter() {
+    const filteredData = clothes.filter((item) => item.isBookmarked === true)
+    setClothes(filteredData)
+  }
+
   return (
-    <StyledMain>
-      {clothes.map((item) => (
-        <Clothing
-          clothes={clothes}
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          color={item.color}
-          pattern={item.pattern}
-          material={item.material}
-          fitting={item.fitting}
-          imageUrl={item.imageUrl}
-          isBookmarked={item.isBookmarked}
-          onClickBookmark={handleBookmark}
-        />
-      ))}
-    </StyledMain>
+    <>
+      <header>
+        <button onClick={() => onClickFilter()}>click me</button>
+      </header>
+      <StyledMain>
+        {clothes.map((item) => (
+          <Clothing
+            clothes={clothes}
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            color={item.color}
+            pattern={item.pattern}
+            material={item.material}
+            fitting={item.fitting}
+            imageUrl={item.imageUrl}
+            isBookmarked={item.isBookmarked}
+            onClickBookmark={handleBookmark}
+          />
+        ))}
+      </StyledMain>
+    </>
   )
 }
 
