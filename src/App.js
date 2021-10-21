@@ -16,30 +16,43 @@ function App() {
   })
 
   const handleBookmark = (id) => {
-    const index = clothes.findIndex((card) => card.id === id)
+    const index = loadFromLocal('localClothing').findIndex(
+      (card) => card.id === id,
+    )
     const cloth = clothes.find((card) => card.id === id)
 
     const newClothingArray = [
-      ...clothes.slice(0, index),
+      ...loadFromLocal('localClothing').slice(0, index),
       {
         ...cloth,
         isBookmarked: !cloth.isBookmarked,
       },
-      ...clothes.slice(index + 1),
+      ...loadFromLocal('localClothing').slice(index + 1),
     ]
-
-    setClothes(newClothingArray)
     saveToLocal('localClothing', newClothingArray)
 
-   
+    const indexVisible = clothes.findIndex((card) => card.id === id)
+    const newVisibleArray = [
+      ...clothes.slice(0, indexVisible),
+      {
+        ...cloth,
+        isBookmarked: !cloth.isBookmarked,
+      },
+      ...clothes.slice(indexVisible + 1),
+    ]
+    setClothes(newVisibleArray)
+  }
 
   function onClickEntries() {
     setClothes(loadFromLocal('localClothing'))
   }
 
   function onClickFilter() {
-    const filteredData = clothes.filter((item) => item.isBookmarked === true)
+    const filteredData = clothes
+      .slice()
+      .filter((item) => item.isBookmarked === true)
     setClothes(filteredData)
+    console.log('filter1: ' + filteredData)
   }
 
   return (
