@@ -30,6 +30,11 @@ function App() {
 
     setClothes(newClothingArray)
     saveToLocal('localClothing', newClothingArray)
+
+   
+
+  function onClickEntries() {
+    setClothes(loadFromLocal('localClothing'))
   }
 
   function onClickFilter() {
@@ -40,7 +45,8 @@ function App() {
   return (
     <>
       <header>
-        <button onClick={() => onClickFilter()}>click me</button>
+        <button onClick={() => onClickEntries()}>Alle Einträge</button>
+        <button onClick={() => onClickFilter()}>Favoriten</button>
       </header>
       <StyledMain>
         {clothes.map((item) => (
