@@ -1,4 +1,5 @@
 import Clothing from './components/Clothing'
+import Header from './components/Header'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
@@ -38,20 +39,20 @@ function App() {
     shownClothes = clothes
   }
 
-  function onClickEntries() {
+  const handleEntries = () => {
     setShowOnlyBookmarked(false)
   }
 
-  function onClickFilter() {
+  const handleFilter = () => {
     setShowOnlyBookmarked(true)
   }
 
   return (
     <>
-      <header>
-        <button onClick={() => onClickEntries()}>Alle Einträge</button>
-        <button onClick={() => onClickFilter()}>Favoriten</button>
-      </header>
+      <Header
+        onClickEntries={handleEntries}
+        onClickFilter={handleFilter}
+      ></Header>
       <StyledMain>
         {shownClothes.map((item) => (
           <Clothing
