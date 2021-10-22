@@ -7,52 +7,43 @@ import loadFromLocal from './lib/loadFromLocal'
 
 function App() {
   const [clothes, setClothes] = useState(() => {
-    if (loadFromLocal('localClothing')) {
-      return loadFromLocal('localClothing')
-    } else {
+    if (!loadFromLocal('localClothing')) {
       saveToLocal('localClothing', mockupData)
-      return loadFromLocal('localClothing')
     }
+    return loadFromLocal('localClothing')
   })
 
   const handleBookmark = (id) => {
-    const index = loadFromLocal('localClothing').findIndex(
-      (card) => card.id === id,
-    )
     const cloth = clothes.find((card) => card.id === id)
 
-    const newClothingArray = [
-      ...loadFromLocal('localClothing').slice(0, index),
+    const indexClothes = clothes.findIndex((card) => card.id === id)
+    const newClothesArray = [
+      ...clothes.slice(0, indexClothes),
       {
         ...cloth,
         isBookmarked: !cloth.isBookmarked,
       },
-      ...loadFromLocal('localClothing').slice(index + 1),
+      ...clothes.slice(indexClothes + 1),
     ]
-    saveToLocal('localClothing', newClothingArray)
+    setClothes(newClothesArray)
+    saveToLocal('localClothing', newClothesArray)
+  }
 
-    const indexVisible = clothes.findIndex((card) => card.id === id)
-    const newVisibleArray = [
-      ...clothes.slice(0, indexVisible),
-      {
-        ...cloth,
-        isBookmarked: !cloth.isBookmarked,
-      },
-      ...clothes.slice(indexVisible + 1),
-    ]
-    setClothes(newVisibleArray)
+  const [showOnlyBookmarked, setShowOnlyBookmarked] = useState(false)
+
+  let shownClothes
+  if (showOnlyBookmarked) {
+    shownClothes = clothes.filter((cloth) => cloth.isBookmarked === true)
+  } else {
+    shownClothes = clothes
   }
 
   function onClickEntries() {
-    setClothes(loadFromLocal('localClothing'))
+    setShowOnlyBookmarked(false)
   }
 
   function onClickFilter() {
-    const filteredData = clothes
-      .slice()
-      .filter((item) => item.isBookmarked === true)
-    setClothes(filteredData)
-    console.log('filter1: ' + filteredData)
+    setShowOnlyBookmarked(true)
   }
 
   return (
@@ -62,7 +53,7 @@ function App() {
         <button onClick={() => onClickFilter()}>Favoriten</button>
       </header>
       <StyledMain>
-        {clothes.map((item) => (
+        {shownClothes.map((item) => (
           <Clothing
             clothes={clothes}
             key={item.id}
