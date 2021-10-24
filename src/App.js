@@ -15,14 +15,14 @@ function App() {
   })
 
   const handleBookmark = (id) => {
-    const cloth = clothes.find((card) => card.id === id)
+    const garment = clothes.find((card) => card.id === id)
 
     const indexClothes = clothes.findIndex((card) => card.id === id)
     const newClothesArray = [
       ...clothes.slice(0, indexClothes),
       {
-        ...cloth,
-        isBookmarked: !cloth.isBookmarked,
+        ...garment,
+        isBookmarked: !garment.isBookmarked,
       },
       ...clothes.slice(indexClothes + 1),
     ]
@@ -30,28 +30,28 @@ function App() {
     saveToLocal('localClothing', newClothesArray)
   }
 
-  const [showOnlyBookmarked, setShowOnlyBookmarked] = useState(false)
+  const [showBookmarked, setShowBookmarked] = useState(false)
 
   let shownClothes
-  if (showOnlyBookmarked) {
-    shownClothes = clothes.filter((cloth) => cloth.isBookmarked === true)
+  if (showBookmarked) {
+    shownClothes = clothes.filter((garment) => garment.isBookmarked === true)
   } else {
     shownClothes = clothes
   }
 
   const handleEntries = () => {
-    setShowOnlyBookmarked(false)
+    setShowBookmarked(false)
   }
 
-  const handleFilter = () => {
-    setShowOnlyBookmarked(true)
+  const handleFavorites = () => {
+    setShowBookmarked(true)
   }
 
   return (
     <>
       <Header
         onClickEntries={handleEntries}
-        onClickFilter={handleFilter}
+        onClickFavorites={handleFavorites}
       ></Header>
       <StyledMain>
         {shownClothes.map((item) => (

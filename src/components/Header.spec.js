@@ -1,14 +1,14 @@
-import { getAllByRole, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Header from './Header'
 import userEvent from '@testing-library/user-event'
 
 describe('Header', () => {
   it('has two buttons', () => {
-    render(<Header onClickEntries={jest.fn()} onClickFilter={jest.fn()} />)
+    render(<Header />)
 
-    const allButtons = screen.getAllByRole('button')
+    const buttons = screen.getAllByRole('button')
 
-    expect(allButtons).toHaveLength(2)
+    expect(buttons).toHaveLength(2)
   })
 
   it('calls the onFilter function when the filter-button is clicked', () => {
@@ -24,7 +24,7 @@ describe('Header', () => {
   it('calls the onFilter function when the filter-button is clicked', () => {
     const mockOnClick = jest.fn()
 
-    render(<Header onClickFilter={mockOnClick} />)
+    render(<Header onClickFavorites={mockOnClick} />)
     const filterButton = screen.getByText('Favoriten')
     userEvent.click(filterButton)
 
@@ -32,7 +32,7 @@ describe('Header', () => {
   })
 
   it('has the correct button text', () => {
-    render(<Header onClickEntries={jest.fn()} onClickFilter={jest.fn()} />)
+    render(<Header />)
 
     const textEntry = screen.getByText('Alle Einträge')
     const textFavorites = screen.getByText('Favoriten')

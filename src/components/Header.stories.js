@@ -12,5 +12,5 @@ export const buttons = Template.bind({})
 
 buttons.argTypes = {
   onClickEntries: { action: 'clicked' },
-  onClickFilter: { action: 'clicked' },
+  onClickFavorites: { action: 'clicked' },
 }
