@@ -50,11 +50,16 @@ function App() {
 
   const [categories, setCategories] = useState(false)
 
+  const handleCategories = () => {
+    setCategories(true)
+  }
+
   return (
     <>
       <Header
         onClickEntries={handleEntries}
         onClickFavorites={handleFavorites}
+        onClickCategories={handleCategories}
       ></Header>
       <StyledMain>
         <Categories categories={categories} />
