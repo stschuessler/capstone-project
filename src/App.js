@@ -60,8 +60,9 @@ function App() {
     setCategories(false)
   }
 
-  const allCategorieEntries = mockupData.map((item) => item.category)
-  //Nachfragen: mockupData auszutauschen mit welchen Daten
+  const [checkbox, setCheckbox] = useState(false)
+
+  const allCategorieEntries = clothes.map((item) => item.category)
   const unique = (value, index, self) => {
     return self.indexOf(value) === index
   }
