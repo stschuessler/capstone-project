@@ -58,6 +58,14 @@ function App() {
     setCategories(false)
   }
 
+  const allCategorieEntries = mockupData.map((item) => item.category)
+  //Nachfragen: mockupData auszutauschen mit welchen Daten
+  const unique = (value, index, self) => {
+    return self.indexOf(value) === index
+  }
+  const uniqueCategories = allCategorieEntries.filter(unique)
+  console.log(uniqueCategories)
+
   return (
     <>
       <Header
