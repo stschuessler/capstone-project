@@ -7,7 +7,9 @@ function Header({ onClickEntries, onClickFavorites, onClickCategories }) {
         Alle Einträge
       </StyledButton>
       <StyledButton onClick={() => onClickFavorites()}>Favoriten</StyledButton>
-      <button onClick={() => onClickCategories()}>Kategorien</button>
+      <StyledButton onClick={() => onClickCategories()}>
+        Kategorien
+      </StyledButton>
     </>
   )
 }
