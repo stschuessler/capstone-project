@@ -74,7 +74,11 @@ function App() {
         onClickCategories={handleCategories}
       ></Header>
       <StyledMain>
-        <Categories categories={categories} onClickExit={handleExit} />
+        <Categories
+          categories={categories}
+          onClickExit={handleExit}
+          uniqueCategories={uniqueCategories}
+        />
         {shownClothes.map((item) => (
           <Clothing
             clothes={clothes}
