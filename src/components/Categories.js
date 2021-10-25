@@ -1,3 +1,4 @@
+import { indexOf } from 'lodash'
 import styled from 'styled-components/macro'
 
 function Categories({ categories, onClickExit, uniqueCategories, checkbox }) {
@@ -7,36 +8,19 @@ function Categories({ categories, onClickExit, uniqueCategories, checkbox }) {
         <section>
           <form>
             <div>
-              <StyledLabel>
-                <StyledInput
-                  name={uniqueCategories[0]}
-                  type="checkbox"
-                  value=""
-                  //   checked={checkbox}
-                />
-                {uniqueCategories[0]}
-              </StyledLabel>
-
-              <StyledLabel>
-                <StyledInput
-                  name={uniqueCategories[1]}
-                  type="checkbox"
-                  value=""
-                  //   checked={checkbox}
-                />
-                {uniqueCategories[1]}
-              </StyledLabel>
-
-              <StyledLabel>
-                <StyledInput
-                  name={uniqueCategories[2]}
-                  type="checkbox"
-                  value=""
-                  //   checked={checkbox}
-                />
-                {uniqueCategories[2]}
-              </StyledLabel>
+              {uniqueCategories.map((category) => (
+                <StyledLabel>
+                  <StyledInput
+                    name={category}
+                    type="checkbox"
+                    value=""
+                    //   checked={checkbox}
+                  />
+                  {category}
+                </StyledLabel>
+              ))}
             </div>
+
             <div>
               <StyledButton>Load</StyledButton>
               <StyledButton type="reset" value="Reset">
