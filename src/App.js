@@ -1,5 +1,6 @@
 import Clothing from './components/Clothing'
 import Header from './components/Header'
+import Categories from './components/Categories'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
@@ -54,6 +55,7 @@ function App() {
         onClickFavorites={handleFavorites}
       ></Header>
       <StyledMain>
+        <Categories categories={categories} />
         {shownClothes.map((item) => (
           <Clothing
             clothes={clothes}
