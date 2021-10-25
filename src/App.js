@@ -54,6 +54,10 @@ function App() {
     setCategories(true)
   }
 
+  const handleExit = () => {
+    setCategories(false)
+  }
+
   return (
     <>
       <Header
@@ -62,7 +66,7 @@ function App() {
         onClickCategories={handleCategories}
       ></Header>
       <StyledMain>
-        <Categories categories={categories} />
+        <Categories categories={categories} onClickExit={handleExit} />
         {shownClothes.map((item) => (
           <Clothing
             clothes={clothes}

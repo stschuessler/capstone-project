@@ -1,4 +1,4 @@
-function Categories({ categories }) {
+function Categories({ categories, onClickExit }) {
   return (
     <>
       {categories && (
@@ -12,7 +12,7 @@ function Categories({ categories }) {
 
           <button>Load</button>
           <button>Clear</button>
-          <button>Exit</button>
+          <button onClick={() => onClickExit()}>Exit</button>
         </section>
       )}
     </>
