@@ -1,6 +1,7 @@
 const INITIAL_DATA = [
   {
     id: 1,
+    category: 'Bluse',
     title: 'Bluse',
     color: 'grau',
     pattern: 'floral',
@@ -11,6 +12,7 @@ const INITIAL_DATA = [
   },
   {
     id: 2,
+    category: 'Pullover',
     title: 'Pullover',
     color: 'grün',
     pattern: 'einfarbig',
@@ -21,6 +23,7 @@ const INITIAL_DATA = [
   },
   {
     id: 3,
+    category: 'Pullover',
     title: 'Pullover',
     color: 'pink',
     pattern: 'einfarbig',
@@ -31,6 +34,7 @@ const INITIAL_DATA = [
   },
   {
     id: 4,
+    category: 'T-Shirt',
     title: 'T-Shirt',
     color: 'weiß',
     pattern: 'floral',
@@ -41,6 +45,7 @@ const INITIAL_DATA = [
   },
   {
     id: 5,
+    category: 'Bluse',
     title: 'Bluse',
     color: 'grau',
     pattern: 'floral',
@@ -51,6 +56,7 @@ const INITIAL_DATA = [
   },
   {
     id: 6,
+    category: 'Pullover',
     title: 'Pullover',
     color: 'grün',
     pattern: 'einfarbig',
@@ -61,6 +67,7 @@ const INITIAL_DATA = [
   },
   {
     id: 7,
+    category: 'Pullover',
     title: 'Pullover',
     color: 'pink',
     pattern: 'einfarbig',
@@ -71,6 +78,7 @@ const INITIAL_DATA = [
   },
   {
     id: 8,
+    category: 'T-Shirt',
     title: 'T-Shirt',
     color: 'weiß',
     pattern: 'floral',
