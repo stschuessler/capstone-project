@@ -48,6 +48,8 @@ function App() {
     setShowBookmarked(true)
   }
 
+  const [categories, setCategories] = useState(false)
+
   return (
     <>
       <Header
