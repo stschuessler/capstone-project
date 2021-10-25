@@ -42,10 +42,12 @@ function App() {
 
   const handleEntries = () => {
     setShowBookmarked(false)
+    setCategories(false)
   }
 
   const handleFavorites = () => {
     setShowBookmarked(true)
+    setCategories(false)
   }
 
   const [categories, setCategories] = useState(false)
