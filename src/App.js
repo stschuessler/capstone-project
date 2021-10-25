@@ -1,4 +1,5 @@
 import Clothing from './components/Clothing'
+import Header from './components/Header'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
@@ -7,60 +8,69 @@ import loadFromLocal from './lib/loadFromLocal'
 
 function App() {
   const [clothes, setClothes] = useState(() => {
-    if (loadFromLocal('localClothing')) {
-      return loadFromLocal('localClothing')
-    } else {
+    if (!loadFromLocal('localClothing')) {
       saveToLocal('localClothing', mockupData)
-      return loadFromLocal('localClothing')
     }
+    return loadFromLocal('localClothing')
   })
 
   const handleBookmark = (id) => {
-    const index = clothes.findIndex((card) => card.id === id)
-    const cloth = clothes.find((card) => card.id === id)
+    const garment = clothes.find((card) => card.id === id)
 
-    const newClothingArray = [
-      ...clothes.slice(0, index),
+    const indexClothes = clothes.findIndex((card) => card.id === id)
+    const newClothesArray = [
+      ...clothes.slice(0, indexClothes),
       {
-        ...cloth,
-        isBookmarked: !cloth.isBookmarked,
+        ...garment,
+        isBookmarked: !garment.isBookmarked,
       },
-      ...clothes.slice(index + 1),
+      ...clothes.slice(indexClothes + 1),
     ]
+    setClothes(newClothesArray)
+    saveToLocal('localClothing', newClothesArray)
+  }
 
-    // const newClothingArray = clothes.map((cloth) => {
-    //   if (card.id === id) {
-    //     return {
-    //       ...cloth,
-    //       isBookmarked: !cloth.isBookmarked,
-    //     }
-    //   } else {
-    //     return cloth
-    //   }
-    // })
+  const [showBookmarked, setShowBookmarked] = useState(false)
 
-    setClothes(newClothingArray)
-    saveToLocal('localClothing', newClothingArray)
+  let shownClothes
+  if (showBookmarked) {
+    shownClothes = clothes.filter((garment) => garment.isBookmarked === true)
+  } else {
+    shownClothes = clothes
+  }
+
+  const handleEntries = () => {
+    setShowBookmarked(false)
+  }
+
+  const handleFavorites = () => {
+    setShowBookmarked(true)
   }
 
   return (
-    <StyledMain>
-      {clothes.map((item) => (
-        <Clothing
-          clothes={clothes}
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          color={item.color}
-          pattern={item.pattern}
-          material={item.material}
-          fitting={item.fitting}
-          imageUrl={item.imageUrl}
-          isBookmarked={item.isBookmarked}
-          onClickBookmark={handleBookmark}
-        />
-      ))}
-    </StyledMain>
+    <>
+      <Header
+        onClickEntries={handleEntries}
+        onClickFavorites={handleFavorites}
+      ></Header>
+      <StyledMain>
+        {shownClothes.map((item) => (
+          <Clothing
+            clothes={clothes}
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            color={item.color}
+            pattern={item.pattern}
+            material={item.material}
+            fitting={item.fitting}
+            imageUrl={item.imageUrl}
+            isBookmarked={item.isBookmarked}
+            onClickBookmark={handleBookmark}
+          />
+        ))}
+      </StyledMain>
+    </>
   )
 }
 
