@@ -24,7 +24,7 @@ function Categories({ categories, onClickExit, uniqueCategories, checkbox }) {
               <StyledButton type="reset" value="Reset">
                 Neue Auswahl
               </StyledButton>
-              <StyledButton onClick={() => onClickExit()}>
+              <StyledButton type="button" onClick={() => onClickExit()}>
                 Abbrechen
               </StyledButton>
             </div>
