@@ -33,8 +33,6 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState('home')
 
-  // const [showBookmarked, setShowBookmarked] = useState(false)
-
   const filteredClothes = clothes.filter(
     (garment) => garment.isBookmarked === true,
   )
@@ -42,26 +40,6 @@ function App() {
   function handleNavigation(page) {
     setCurrentPage(page)
   }
-
-  // const handleEntries = () => {
-  //   setShowBookmarked(false)
-  //   setCategories(false)
-  // }
-
-  // const handleFavorites = () => {
-  //   setShowBookmarked(true)
-  //   setCategories(false)
-  // }
-
-  // const [categories, setCategories] = useState(false)
-
-  // const handleCategories = () => {
-  //   setCategories(true)
-  // }
-
-  // const handleExit = () => {
-  //   setCategories(false)
-  // }
 
   const allCategorieEntries = clothes.map((item) => item.category)
   const unique = (value, index, self) => {
@@ -71,12 +49,7 @@ function App() {
 
   return (
     <>
-      <Header
-        onNavigate={handleNavigation}
-        // onClickEntries={handleEntries}
-        // onClickFavorites={handleFavorites}
-        // onClickCategories={handleCategories}
-      ></Header>
+      <Header onNavigate={handleNavigation}></Header>
 
       {currentPage === 'home' && (
         <StyledMain>
