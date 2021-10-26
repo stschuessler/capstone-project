@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-function Categories({ categories, onClickExit, uniqueCategories, checkbox }) {
+function Categories({ categories, onClickExit, uniqueCategories }) {
   return (
     <>
       {categories && (
@@ -14,7 +14,6 @@ function Categories({ categories, onClickExit, uniqueCategories, checkbox }) {
                     type="checkbox"
                     name={category}
                     value={category}
-                    //   checked={checkbox}
                   />
                 </StyledLabel>
               ))}
