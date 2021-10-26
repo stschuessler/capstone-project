@@ -11,7 +11,5 @@ const Template = (args) => <Header {...args} />
 export const buttons = Template.bind({})
 
 buttons.argTypes = {
-  onClickEntries: { action: 'clicked' },
-  onClickFavorites: { action: 'clicked' },
-  onClickCategories: { action: 'clicked' },
+  onNavigate: { action: 'clicked' },
 }

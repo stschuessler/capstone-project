@@ -10,6 +10,9 @@ const Template = (args) => <Categories {...args} />
 
 export const form = Template.bind({})
 form.args = {
-  categories: true,
   uniqueCategories: ['Hose', 'Bluse'],
+}
+
+form.argTypes = {
+  onNavigate: { action: 'clicked' },
 }
