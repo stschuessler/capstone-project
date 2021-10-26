@@ -11,34 +11,20 @@ describe('Header', () => {
     expect(buttons).toHaveLength(3)
   })
 
-  it('calls the onClickEntries function when the all-entry-filter-button is clicked', () => {
+  it('calls the onNavigate function when one of the buttons is clicked', () => {
     const mockOnClick = jest.fn()
 
-    render(<Header onClickEntries={mockOnClick} />)
+    render(<Header onNavigate={mockOnClick} />)
     const allEntriesButton = screen.getByText('Alle Einträge')
-    userEvent.click(allEntriesButton)
-
-    expect(mockOnClick).toHaveBeenCalled()
-  })
-
-  it('calls the onClickFavorites function when the favorite-filter-button is clicked', () => {
-    const mockOnClick = jest.fn()
-
-    render(<Header onClickFavorites={mockOnClick} />)
     const filterButton = screen.getByText('Favoriten')
-    userEvent.click(filterButton)
-
-    expect(mockOnClick).toHaveBeenCalled()
-  })
-
-  it('calls the onClickCategories function when the category-filter-button is clicked', () => {
-    const mockOnClick = jest.fn()
-
-    render(<Header onClickCategories={mockOnClick} />)
     const categoryButton = screen.getByText('Kategorien')
+    userEvent.click(allEntriesButton)
+    userEvent.click(filterButton)
     userEvent.click(categoryButton)
 
-    expect(mockOnClick).toHaveBeenCalled()
+    expect(mockOnClick).toHaveBeenCalledWith('home')
+    expect(mockOnClick).toHaveBeenCalledWith('favorites')
+    expect(mockOnClick).toHaveBeenCalledWith('categories')
   })
 
   it('has the correct button text', () => {
@@ -46,8 +32,10 @@ describe('Header', () => {
 
     const textEntry = screen.getByText('Alle Einträge')
     const textFavorites = screen.getByText('Favoriten')
+    const textCategories = screen.getByText('Kategorien')
 
     expect(textEntry).toBeInTheDocument()
     expect(textFavorites).toBeInTheDocument()
+    expect(textCategories).toBeInTheDocument()
   })
 })

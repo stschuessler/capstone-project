@@ -6,7 +6,7 @@ describe('Categories', () => {
   const mockCategories = ['Hose', 'Jacke']
 
   it('has a form', () => {
-    render(<Categories categories={true} uniqueCategories={mockCategories} />)
+    render(<Categories uniqueCategories={mockCategories} />)
 
     const form = screen.getByLabelText('Hose')
 
@@ -14,7 +14,7 @@ describe('Categories', () => {
   })
 
   it('has an input field with the expected category text', () => {
-    render(<Categories categories={true} uniqueCategories={mockCategories} />)
+    render(<Categories uniqueCategories={mockCategories} />)
 
     const firstInputField = screen.getByDisplayValue('Hose')
     const secondInputField = screen.getByDisplayValue('Jacke')
@@ -24,22 +24,18 @@ describe('Categories', () => {
   })
 
   it('has three buttons', () => {
-    render(<Categories categories={true} uniqueCategories={mockCategories} />)
+    render(<Categories uniqueCategories={mockCategories} />)
 
     const buttons = screen.getAllByRole('button')
 
     expect(buttons).toHaveLength(3)
   })
 
-  it('calls the onClickExit function when the exit-button is clicked', () => {
+  it('calls the onNavigate function when the exit-button is clicked', () => {
     const mockOnClick = jest.fn()
 
     render(
-      <Categories
-        categories={true}
-        onClickExit={mockOnClick}
-        uniqueCategories={mockCategories}
-      />,
+      <Categories onNavigate={mockOnClick} uniqueCategories={mockCategories} />,
     )
     const exitButton = screen.getByText('Abbrechen')
     userEvent.click(exitButton)
@@ -51,11 +47,7 @@ describe('Categories', () => {
     const mockOnClick = jest.fn()
 
     render(
-      <Categories
-        categories={true}
-        onClickExit={mockOnClick}
-        uniqueCategories={mockCategories}
-      />,
+      <Categories onNavigate={mockOnClick} uniqueCategories={mockCategories} />,
     )
     const exitButton = screen.getByText('Abbrechen')
     userEvent.click(exitButton)
@@ -64,7 +56,7 @@ describe('Categories', () => {
   })
 
   it('has the correct button text', () => {
-    render(<Categories categories={true} uniqueCategories={mockCategories} />)
+    render(<Categories uniqueCategories={mockCategories} />)
 
     const textLoadButton = screen.getByText('Auswahl anzeigen')
     const textClearButton = screen.getByText('Neue Auswahl')
