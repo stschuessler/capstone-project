@@ -3,15 +3,15 @@ import Header from './Header'
 import userEvent from '@testing-library/user-event'
 
 describe('Header', () => {
-  it('has two buttons', () => {
+  it('has three buttons', () => {
     render(<Header />)
 
     const buttons = screen.getAllByRole('button')
 
-    expect(buttons).toHaveLength(2)
+    expect(buttons).toHaveLength(3)
   })
 
-  it('calls the onFilter function when the filter-button is clicked', () => {
+  it('calls the onClickEntries function when the all-entry-filter-button is clicked', () => {
     const mockOnClick = jest.fn()
 
     render(<Header onClickEntries={mockOnClick} />)
@@ -21,12 +21,22 @@ describe('Header', () => {
     expect(mockOnClick).toHaveBeenCalled()
   })
 
-  it('calls the onFilter function when the filter-button is clicked', () => {
+  it('calls the onClickFavorites function when the favorite-filter-button is clicked', () => {
     const mockOnClick = jest.fn()
 
     render(<Header onClickFavorites={mockOnClick} />)
     const filterButton = screen.getByText('Favoriten')
     userEvent.click(filterButton)
+
+    expect(mockOnClick).toHaveBeenCalled()
+  })
+
+  it('calls the onClickCategories function when the category-filter-button is clicked', () => {
+    const mockOnClick = jest.fn()
+
+    render(<Header onClickCategories={mockOnClick} />)
+    const categoryButton = screen.getByText('Kategorien')
+    userEvent.click(categoryButton)
 
     expect(mockOnClick).toHaveBeenCalled()
   })
