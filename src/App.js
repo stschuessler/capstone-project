@@ -15,6 +15,8 @@ function App() {
     return loadFromLocal('localClothing')
   })
 
+  const [currentPage, setCurrentPage] = useState('home')
+
   const handleBookmark = (id) => {
     const garment = clothes.find((card) => card.id === id)
 
@@ -30,8 +32,6 @@ function App() {
     setClothes(newClothesArray)
     saveToLocal('localClothing', newClothesArray)
   }
-
-  const [currentPage, setCurrentPage] = useState('home')
 
   const filteredClothes = clothes.filter(
     (garment) => garment.isBookmarked === true,
