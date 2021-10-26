@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-function Header({ onNavigate, onClickCategories }) {
+function Header({ onNavigate }) {
   return (
     <>
       <StyledButton onClick={() => onNavigate('home')}>
@@ -9,7 +9,7 @@ function Header({ onNavigate, onClickCategories }) {
       <StyledButton onClick={() => onNavigate('favorites')}>
         Favoriten
       </StyledButton>
-      <StyledButton onClick={() => onClickCategories()}>
+      <StyledButton onClick={() => onNavigate('categories')}>
         Kategorien
       </StyledButton>
     </>

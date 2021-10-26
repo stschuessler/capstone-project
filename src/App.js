@@ -33,7 +33,7 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState('home')
 
-  const [showBookmarked, setShowBookmarked] = useState(false)
+  // const [showBookmarked, setShowBookmarked] = useState(false)
 
   const filteredClothes = clothes.filter(
     (garment) => garment.isBookmarked === true,
@@ -53,15 +53,15 @@ function App() {
   //   setCategories(false)
   // }
 
-  const [categories, setCategories] = useState(false)
+  // const [categories, setCategories] = useState(false)
 
-  const handleCategories = () => {
-    setCategories(true)
-  }
+  // const handleCategories = () => {
+  //   setCategories(true)
+  // }
 
-  const handleExit = () => {
-    setCategories(false)
-  }
+  // const handleExit = () => {
+  //   setCategories(false)
+  // }
 
   const allCategorieEntries = clothes.map((item) => item.category)
   const unique = (value, index, self) => {
@@ -75,7 +75,7 @@ function App() {
         onNavigate={handleNavigation}
         // onClickEntries={handleEntries}
         // onClickFavorites={handleFavorites}
-        onClickCategories={handleCategories}
+        // onClickCategories={handleCategories}
       ></Header>
 
       {currentPage === 'home' && (
@@ -114,11 +114,12 @@ function App() {
           />
         ))}
 
-      <Categories
-        categories={categories}
-        onClickExit={handleExit}
-        uniqueCategories={uniqueCategories}
-      />
+      {currentPage === 'categories' && (
+        <Categories
+          onNavigate={handleNavigation}
+          uniqueCategories={uniqueCategories}
+        />
+      )}
     </>
   )
 }

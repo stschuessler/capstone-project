@@ -1,36 +1,26 @@
 import styled from 'styled-components/macro'
 
-function Categories({ categories, onClickExit, uniqueCategories }) {
+function Categories({ onNavigate, uniqueCategories }) {
   return (
-    <>
-      {categories && (
-        <section>
-          <form>
-            <div>
-              {uniqueCategories.map((category) => (
-                <StyledLabel key={category}>
-                  {category}
-                  <StyledInput
-                    type="checkbox"
-                    name={category}
-                    value={category}
-                  />
-                </StyledLabel>
-              ))}
-            </div>
-            <div>
-              <StyledButton>Auswahl anzeigen</StyledButton>
-              <StyledButton type="reset" value="Reset">
-                Neue Auswahl
-              </StyledButton>
-              <StyledButton type="button" onClick={() => onClickExit()}>
-                Abbrechen
-              </StyledButton>
-            </div>
-          </form>
-        </section>
-      )}
-    </>
+    <form>
+      <div>
+        {uniqueCategories.map((category) => (
+          <StyledLabel key={category}>
+            {category}
+            <StyledInput type="checkbox" name={category} value={category} />
+          </StyledLabel>
+        ))}
+      </div>
+      <div>
+        <StyledButton>Auswahl anzeigen</StyledButton>
+        <StyledButton type="reset" value="Reset">
+          Neue Auswahl
+        </StyledButton>
+        <StyledButton type="button" onClick={() => onNavigate('home')}>
+          Abbrechen
+        </StyledButton>
+      </div>
+    </form>
   )
 }
 
