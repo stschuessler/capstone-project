@@ -31,6 +31,8 @@ function App() {
     saveToLocal('localClothing', newClothesArray)
   }
 
+  const [currentPage, setCurrentPage] = useState('home')
+
   const [showBookmarked, setShowBookmarked] = useState(false)
 
   let shownClothes
@@ -40,10 +42,14 @@ function App() {
     shownClothes = clothes
   }
 
-  const handleEntries = () => {
-    setShowBookmarked(false)
-    setCategories(false)
+  function handleNavigation(page) {
+    setCurrentPage(page)
   }
+
+  // const handleEntries = () => {
+  //   setShowBookmarked(false)
+  //   setCategories(false)
+  // }
 
   const handleFavorites = () => {
     setShowBookmarked(true)
@@ -71,33 +77,31 @@ function App() {
   return (
     <>
       <Header
-        onClickEntries={handleEntries}
+        onNavigate={handleNavigation}
+        // onClickEntries={handleEntries}
         onClickFavorites={handleFavorites}
         onClickCategories={handleCategories}
         // checkbox={checkbox}
       ></Header>
-      <Categories
-        categories={categories}
-        onClickExit={handleExit}
-        uniqueCategories={uniqueCategories}
-      />
-      <StyledMain>
-        {shownClothes.map((item) => (
-          <Clothing
-            clothes={clothes}
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            color={item.color}
-            pattern={item.pattern}
-            material={item.material}
-            fitting={item.fitting}
-            imageUrl={item.imageUrl}
-            isBookmarked={item.isBookmarked}
-            onClickBookmark={handleBookmark}
-          />
-        ))}
-      </StyledMain>
+
+      {currentPage === 'home' && (
+        <StyledMain>
+          {clothes.map((item) => (
+            <Clothing
+              clothes={clothes}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              color={item.color}
+              pattern={item.pattern}
+              material={item.material}
+              fitting={item.fitting}
+              imageUrl={item.imageUrl}
+              isBookmarked={item.isBookmarked}
+              onClickBookmark={handleBookmark}
+            />
+          ))}
+        </StyledMain>
     </>
   )
 }
