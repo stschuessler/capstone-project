@@ -35,12 +35,9 @@ function App() {
 
   const [showBookmarked, setShowBookmarked] = useState(false)
 
-  let shownClothes
-  if (showBookmarked) {
-    shownClothes = clothes.filter((garment) => garment.isBookmarked === true)
-  } else {
-    shownClothes = clothes
-  }
+  const filteredClothes = clothes.filter(
+    (garment) => garment.isBookmarked === true,
+  )
 
   function handleNavigation(page) {
     setCurrentPage(page)
@@ -51,10 +48,10 @@ function App() {
   //   setCategories(false)
   // }
 
-  const handleFavorites = () => {
-    setShowBookmarked(true)
-    setCategories(false)
-  }
+  // const handleFavorites = () => {
+  //   setShowBookmarked(true)
+  //   setCategories(false)
+  // }
 
   const [categories, setCategories] = useState(false)
 
@@ -65,8 +62,6 @@ function App() {
   const handleExit = () => {
     setCategories(false)
   }
-
-  // const [checkbox, setCheckbox] = useState(false)
 
   const allCategorieEntries = clothes.map((item) => item.category)
   const unique = (value, index, self) => {
@@ -79,9 +74,8 @@ function App() {
       <Header
         onNavigate={handleNavigation}
         // onClickEntries={handleEntries}
-        onClickFavorites={handleFavorites}
+        // onClickFavorites={handleFavorites}
         onClickCategories={handleCategories}
-        // checkbox={checkbox}
       ></Header>
 
       {currentPage === 'home' && (
@@ -102,6 +96,29 @@ function App() {
             />
           ))}
         </StyledMain>
+      )}
+      {currentPage === 'favorites' &&
+        filteredClothes.map((item) => (
+          <Clothing
+            clothes={clothes}
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            color={item.color}
+            pattern={item.pattern}
+            material={item.material}
+            fitting={item.fitting}
+            imageUrl={item.imageUrl}
+            isBookmarked={item.isBookmarked}
+            onClickBookmark={handleBookmark}
+          />
+        ))}
+
+      <Categories
+        categories={categories}
+        onClickExit={handleExit}
+        uniqueCategories={uniqueCategories}
+      />
     </>
   )
 }
