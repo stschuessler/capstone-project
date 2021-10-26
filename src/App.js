@@ -6,6 +6,7 @@ import mockupData from './mockup-data'
 import { useState } from 'react'
 import saveToLocal from './lib/saveToLocal'
 import loadFromLocal from './lib/loadFromLocal'
+import filterAllCategories from './lib/filterAllCategories'
 
 function App() {
   const [clothes, setClothes] = useState(() => {
@@ -41,11 +42,7 @@ function App() {
     setCurrentPage(page)
   }
 
-  const allCategorieEntries = clothes.map((item) => item.category)
-  const unique = (value, index, self) => {
-    return self.indexOf(value) === index
-  }
-  const uniqueCategories = allCategorieEntries.filter(unique)
+  const uniqueCategories = filterAllCategories(clothes)
 
   return (
     <>
