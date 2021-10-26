@@ -60,14 +60,13 @@ function App() {
     setCategories(false)
   }
 
-  const [checkbox, setCheckbox] = useState(false)
+  // const [checkbox, setCheckbox] = useState(false)
 
   const allCategorieEntries = clothes.map((item) => item.category)
   const unique = (value, index, self) => {
     return self.indexOf(value) === index
   }
   const uniqueCategories = allCategorieEntries.filter(unique)
-  console.log(uniqueCategories)
 
   return (
     <>
@@ -75,8 +74,8 @@ function App() {
         onClickEntries={handleEntries}
         onClickFavorites={handleFavorites}
         onClickCategories={handleCategories}
+        // checkbox={checkbox}
       ></Header>
-      <StyledMain>
       <Categories
         categories={categories}
         onClickExit={handleExit}
