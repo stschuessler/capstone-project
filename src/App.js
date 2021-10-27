@@ -43,6 +43,12 @@ function App() {
     setCurrentPage(page)
   }
 
+  const filteredCategoriesClothes = clothes.filter((garment) =>
+    categories.includes(garment.category),
+  )
+
+  // console.log(filteredCategoriesClothes)
+
   function addCategories(selectedCategories) {
     setCategories(selectedCategories)
   }
@@ -90,11 +96,28 @@ function App() {
         ))}
 
       {currentPage === 'categories' && (
-        <Categories
-          onNavigate={handleNavigation}
-          uniqueCategories={uniqueCategories}
+        <>
+          <Categories
+            onNavigate={handleNavigation}
+            uniqueCategories={uniqueCategories}
             onAddCategories={addCategories}
-        />
+          />
+          {filteredCategoriesClothes.map((item) => (
+            <Clothing
+              clothes={clothes}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              color={item.color}
+              pattern={item.pattern}
+              material={item.material}
+              fitting={item.fitting}
+              imageUrl={item.imageUrl}
+              isBookmarked={item.isBookmarked}
+              onClickBookmark={handleBookmark}
+            />
+          ))}
+        </>
       )}
     </>
   )
