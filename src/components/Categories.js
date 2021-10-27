@@ -1,8 +1,19 @@
 import styled from 'styled-components/macro'
 
 function Categories({ onNavigate, uniqueCategories }) {
+  function handleSubmit(event) {
+    event.preventDefault()
+    const form = event.target
+
+    const elements = Object.values(form.elements) // Makes array from object
+    console.log(elements)
+    const checkedElements = elements.filter((element) => element.checked)
+    const selectedCategories = checkedElements.map((el) => el.value)
+    const categories = [...new Set(selectedCategories)] // ...new Set allows to remove double entries
+    console.log(categories)
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         {uniqueCategories.map((category) => (
           <StyledLabel key={category}>
