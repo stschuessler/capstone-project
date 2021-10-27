@@ -12,6 +12,9 @@ function Header({ onNavigate }) {
       <StyledButton onClick={() => onNavigate('categories')}>
         Kategorien
       </StyledButton>
+      <StyledButton onClick={() => onNavigate('create')}>
+        Neuer Eintrag
+      </StyledButton>
     </>
   )
 }

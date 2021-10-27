@@ -1,6 +1,7 @@
 import Clothing from './components/Clothing'
 import Header from './components/Header'
 import Categories from './components/Categories'
+import NewEntry from './components/NewEntry'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
@@ -122,6 +123,8 @@ function App() {
           ))}
         </>
       )}
+
+      {currentPage === 'create' && <NewEntry />}
     </>
   )
 }
