@@ -47,13 +47,15 @@ function App() {
     categories.includes(garment.category),
   )
 
-  // console.log(filteredCategoriesClothes)
-
   function addCategories(selectedCategories) {
     setCategories(selectedCategories)
   }
 
   const uniqueCategories = filterAllCategories(clothes)
+
+  function categorieReset() {
+    setCategories([])
+  }
 
   return (
     <>
@@ -101,6 +103,7 @@ function App() {
             onNavigate={handleNavigation}
             uniqueCategories={uniqueCategories}
             onAddCategories={addCategories}
+            onReset={categorieReset}
           />
           {filteredCategoriesClothes.map((item) => (
             <Clothing

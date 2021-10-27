@@ -1,6 +1,11 @@
 import styled from 'styled-components/macro'
 
-function Categories({ onNavigate, uniqueCategories, onAddCategories }) {
+function Categories({
+  onNavigate,
+  uniqueCategories,
+  onAddCategories,
+  onReset,
+}) {
   function handleSubmit(event) {
     event.preventDefault()
     const form = event.target
@@ -24,7 +29,7 @@ function Categories({ onNavigate, uniqueCategories, onAddCategories }) {
       </div>
       <div>
         <StyledButton>Auswahl anzeigen</StyledButton>
-        <StyledButton type="reset" value="Reset">
+        <StyledButton type="reset" value="Reset" onClick={() => onReset()}>
           Neue Auswahl
         </StyledButton>
         <StyledButton type="button" onClick={() => onNavigate('home')}>
