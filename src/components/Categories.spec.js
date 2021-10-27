@@ -31,19 +31,19 @@ describe('Categories', () => {
     expect(buttons).toHaveLength(3)
   })
 
-  it('calls the onNavigate function when the exit-button is clicked', () => {
+  it('calls the onReset function when the reset-button is clicked', () => {
     const mockOnClick = jest.fn()
 
     render(
-      <Categories onNavigate={mockOnClick} uniqueCategories={mockCategories} />,
+      <Categories onReset={mockOnClick} uniqueCategories={mockCategories} />,
     )
-    const exitButton = screen.getByText('Abbrechen')
-    userEvent.click(exitButton)
+    const resetButton = screen.getByText('Neue Auswahl')
+    userEvent.click(resetButton)
 
     expect(mockOnClick).toHaveBeenCalled()
   })
 
-  it('hides all elements when clicking the exit-button', () => {
+  it('calls the onNavigate function when the exit-button is clicked', () => {
     const mockOnClick = jest.fn()
 
     render(

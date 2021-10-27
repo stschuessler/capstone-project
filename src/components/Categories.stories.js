@@ -15,4 +15,6 @@ form.args = {
 
 form.argTypes = {
   onNavigate: { action: 'clicked' },
+  onAddCategories: { action: 'clicked' },
+  onReset: { action: 'clicked' },
 }
