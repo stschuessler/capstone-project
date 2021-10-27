@@ -17,6 +17,7 @@ function App() {
   })
 
   const [currentPage, setCurrentPage] = useState('home')
+  const [categories, setCategories] = useState([])
 
   const handleBookmark = (id) => {
     const garment = clothes.find((card) => card.id === id)
@@ -40,6 +41,10 @@ function App() {
 
   function handleNavigation(page) {
     setCurrentPage(page)
+  }
+
+  function addCategories(selectedCategories) {
+    setCategories(selectedCategories)
   }
 
   const uniqueCategories = filterAllCategories(clothes)
@@ -88,6 +93,7 @@ function App() {
         <Categories
           onNavigate={handleNavigation}
           uniqueCategories={uniqueCategories}
+            onAddCategories={addCategories}
         />
       )}
     </>

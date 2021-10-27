@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-function Categories({ onNavigate, uniqueCategories }) {
+function Categories({ onNavigate, uniqueCategories, onAddCategories }) {
   function handleSubmit(event) {
     event.preventDefault()
     const form = event.target
@@ -10,7 +10,7 @@ function Categories({ onNavigate, uniqueCategories }) {
     const checkedElements = elements.filter((element) => element.checked)
     const selectedCategories = checkedElements.map((el) => el.value)
     const categories = [...new Set(selectedCategories)] // ...new Set allows to remove double entries
-    console.log(categories)
+    onAddCategories(categories)
   }
   return (
     <form onSubmit={handleSubmit}>
