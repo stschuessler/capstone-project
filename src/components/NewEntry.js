@@ -44,7 +44,15 @@ const fittingArray = [
   'Relaxed Fit',
 ]
 
-function NewEntry() {
+function NewEntry({ onNavigate }) {
+  // function NewEntry() {
+  // function handleSubmit(event) {
+  //   event.preventDefault()
+  //   const form = event.target
+  //   const elements = Object.values(form.elements)
+  //   console.log(elements)
+  // }
+
   return (
     <form>
       {/* onSubmit={handleSubmit}> */}
@@ -136,7 +144,9 @@ function NewEntry() {
 
       <StyledSubmitButton>Eintrag erstellen</StyledSubmitButton>
       <StyledResetButton type="reset">Neue Auswahl</StyledResetButton>
-      <StyledResetButton type="button">Abbrechen</StyledResetButton>
+      <StyledResetButton type="button" onClick={() => onNavigate('home')}>
+        Abbrechen
+      </StyledResetButton>
     </form>
   )
 }

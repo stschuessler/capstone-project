@@ -124,7 +124,7 @@ function App() {
         </>
       )}
 
-      {currentPage === 'create' && <NewEntry />}
+      {currentPage === 'create' && <NewEntry onNavigate={handleNavigation} />}
     </>
   )
 }
