@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { nanoid } from 'nanoid'
 
 const colorArray = [
   'weiß',
@@ -44,18 +45,30 @@ const fittingArray = [
   'Relaxed Fit',
 ]
 
-function NewEntry({ onNavigate }) {
-  // function NewEntry() {
-  // function handleSubmit(event) {
-  //   event.preventDefault()
-  //   const form = event.target
-  //   const elements = Object.values(form.elements)
-  //   console.log(elements)
-  // }
+function NewEntry({ onNavigate, onNewEntry }) {
+  function handleSubmit(event) {
+    event.preventDefault()
+    const form = event.target
+
+    const { category, title, color, pattern, material, fitting } = form.elements
+
+    const newEntry = {
+      id: nanoid(),
+      category: category.value,
+      title: title.value,
+      color: color.value,
+      pattern: pattern.value,
+      material: material.value,
+      fitting: fitting.value,
+      imageUrl: '/images/bluse-floral.png', // cloudinary einbinden
+      isBookmarked: false,
+    }
+
+    onNewEntry(newEntry)
+  }
 
   return (
-    <form>
-      {/* onSubmit={handleSubmit}> */}
+    <form onSubmit={handleSubmit}>
       <StyledContainer>
         <StyledLabel>
           Gib einen Namen für dein Kleidungsstück ein:
@@ -81,7 +94,7 @@ function NewEntry({ onNavigate }) {
           {colorArray.map((color) => (
             <StyledLabel key={color}>
               {color}
-              <StyledInput type="radio" name="color" value="{color}" required />
+              <StyledInput type="radio" name="color" value={color} required />
             </StyledLabel>
           ))}
         </StyledRadioButton>
@@ -96,7 +109,7 @@ function NewEntry({ onNavigate }) {
               <StyledInput
                 type="radio"
                 name="pattern"
-                value="{pattern}"
+                value={pattern}
                 required
               />
             </StyledLabel>
@@ -113,7 +126,7 @@ function NewEntry({ onNavigate }) {
               <StyledInput
                 type="radio"
                 name="material"
-                value="{material}"
+                value={material}
                 required
               />
             </StyledLabel>
@@ -130,7 +143,7 @@ function NewEntry({ onNavigate }) {
               <StyledInput
                 type="radio"
                 name="fitting"
-                value="{fitting}"
+                value={fitting}
                 required
               />
             </StyledLabel>

@@ -19,6 +19,7 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState('home')
   const [categories, setCategories] = useState([])
+  const [entry, setEntry] = useState([])
 
   const handleBookmark = (id) => {
     const garment = clothes.find((card) => card.id === id)
@@ -57,6 +58,12 @@ function App() {
   function categorieReset() {
     setCategories([])
   }
+
+  function addNewEntry(addEntry) {
+    setEntry(addEntry)
+  }
+
+  console.log(entry)
 
   return (
     <>
@@ -124,7 +131,9 @@ function App() {
         </>
       )}
 
-      {currentPage === 'create' && <NewEntry onNavigate={handleNavigation} />}
+      {currentPage === 'create' && (
+        <NewEntry onNavigate={handleNavigation} onNewEntry={addNewEntry} />
+      )}
     </>
   )
 }
