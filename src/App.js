@@ -19,7 +19,6 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState('home')
   const [categories, setCategories] = useState([])
-  const [entry, setEntry] = useState([])
 
   const handleBookmark = (id) => {
     const garment = clothes.find((card) => card.id === id)
@@ -35,6 +34,12 @@ function App() {
     ]
     setClothes(newClothesArray)
     saveToLocal('localClothing', newClothesArray)
+  }
+
+  function addNewEntry(addEntry) {
+    const newEntry = [...clothes, addEntry]
+    setClothes(newEntry)
+    saveToLocal('localClothing', newEntry)
   }
 
   const filteredClothes = clothes.filter(
@@ -58,12 +63,6 @@ function App() {
   function categorieReset() {
     setCategories([])
   }
-
-  function addNewEntry(addEntry) {
-    setEntry(addEntry)
-  }
-
-  console.log(entry)
 
   return (
     <>
