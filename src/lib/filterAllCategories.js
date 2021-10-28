@@ -4,8 +4,8 @@ const unique = (value, index, self) => {
 
 function filterAllCategories(clothes) {
   const allCategorieEntries = clothes.map((item) => item.category)
-  const bla = allCategorieEntries.filter(unique)
-  return bla
+  const filteredEntries = allCategorieEntries.filter(unique)
+  return filteredEntries
 }
 
 export default filterAllCategories
