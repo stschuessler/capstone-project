@@ -3,32 +3,28 @@ import Header from './Header'
 import userEvent from '@testing-library/user-event'
 
 describe('Header', () => {
-  it('has two buttons', () => {
+  it('has three buttons', () => {
     render(<Header />)
 
     const buttons = screen.getAllByRole('button')
 
-    expect(buttons).toHaveLength(2)
+    expect(buttons).toHaveLength(3)
   })
 
-  it('calls the onFilter function when the filter-button is clicked', () => {
+  it('calls the onNavigate function when one of the buttons is clicked', () => {
     const mockOnClick = jest.fn()
 
-    render(<Header onClickEntries={mockOnClick} />)
+    render(<Header onNavigate={mockOnClick} />)
     const allEntriesButton = screen.getByText('Alle Einträge')
-    userEvent.click(allEntriesButton)
-
-    expect(mockOnClick).toHaveBeenCalled()
-  })
-
-  it('calls the onFilter function when the filter-button is clicked', () => {
-    const mockOnClick = jest.fn()
-
-    render(<Header onClickFavorites={mockOnClick} />)
     const filterButton = screen.getByText('Favoriten')
+    const categoryButton = screen.getByText('Kategorien')
+    userEvent.click(allEntriesButton)
     userEvent.click(filterButton)
+    userEvent.click(categoryButton)
 
-    expect(mockOnClick).toHaveBeenCalled()
+    expect(mockOnClick).toHaveBeenCalledWith('home')
+    expect(mockOnClick).toHaveBeenCalledWith('favorites')
+    expect(mockOnClick).toHaveBeenCalledWith('categories')
   })
 
   it('has the correct button text', () => {
@@ -36,8 +32,10 @@ describe('Header', () => {
 
     const textEntry = screen.getByText('Alle Einträge')
     const textFavorites = screen.getByText('Favoriten')
+    const textCategories = screen.getByText('Kategorien')
 
     expect(textEntry).toBeInTheDocument()
     expect(textFavorites).toBeInTheDocument()
+    expect(textCategories).toBeInTheDocument()
   })
 })

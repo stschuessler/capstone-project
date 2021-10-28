@@ -1,12 +1,17 @@
 import styled from 'styled-components/macro'
 
-function Header({ onClickEntries, onClickFavorites }) {
+function Header({ onNavigate }) {
   return (
     <>
-      <StyledButton onClick={() => onClickEntries()}>
+      <StyledButton onClick={() => onNavigate('home')}>
         Alle Einträge
       </StyledButton>
-      <StyledButton onClick={() => onClickFavorites()}>Favoriten</StyledButton>
+      <StyledButton onClick={() => onNavigate('favorites')}>
+        Favoriten
+      </StyledButton>
+      <StyledButton onClick={() => onNavigate('categories')}>
+        Kategorien
+      </StyledButton>
     </>
   )
 }

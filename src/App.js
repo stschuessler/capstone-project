@@ -1,10 +1,12 @@
 import Clothing from './components/Clothing'
 import Header from './components/Header'
+import Categories from './components/Categories'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
 import saveToLocal from './lib/saveToLocal'
 import loadFromLocal from './lib/loadFromLocal'
+import filterAllCategories from './lib/filterAllCategories'
 
 function App() {
   const [clothes, setClothes] = useState(() => {
@@ -13,6 +15,9 @@ function App() {
     }
     return loadFromLocal('localClothing')
   })
+
+  const [currentPage, setCurrentPage] = useState('home')
+  const [categories, setCategories] = useState([])
 
   const handleBookmark = (id) => {
     const garment = clothes.find((card) => card.id === id)
@@ -30,31 +35,53 @@ function App() {
     saveToLocal('localClothing', newClothesArray)
   }
 
-  const [showBookmarked, setShowBookmarked] = useState(false)
+  const filteredClothes = clothes.filter(
+    (garment) => garment.isBookmarked === true,
+  )
 
-  let shownClothes
-  if (showBookmarked) {
-    shownClothes = clothes.filter((garment) => garment.isBookmarked === true)
-  } else {
-    shownClothes = clothes
+  function handleNavigation(page) {
+    setCurrentPage(page)
   }
 
-  const handleEntries = () => {
-    setShowBookmarked(false)
+  const filteredCategoriesClothes = clothes.filter((garment) =>
+    categories.includes(garment.category),
+  )
+
+  function addCategories(selectedCategories) {
+    setCategories(selectedCategories)
   }
 
-  const handleFavorites = () => {
-    setShowBookmarked(true)
+  const uniqueCategories = filterAllCategories(clothes)
+
+  function categorieReset() {
+    setCategories([])
   }
 
   return (
     <>
-      <Header
-        onClickEntries={handleEntries}
-        onClickFavorites={handleFavorites}
-      ></Header>
-      <StyledMain>
-        {shownClothes.map((item) => (
+      <Header onNavigate={handleNavigation}></Header>
+
+      {currentPage === 'home' && (
+        <StyledMain>
+          {clothes.map((item) => (
+            <Clothing
+              clothes={clothes}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              color={item.color}
+              pattern={item.pattern}
+              material={item.material}
+              fitting={item.fitting}
+              imageUrl={item.imageUrl}
+              isBookmarked={item.isBookmarked}
+              onClickBookmark={handleBookmark}
+            />
+          ))}
+        </StyledMain>
+      )}
+      {currentPage === 'favorites' &&
+        filteredClothes.map((item) => (
           <Clothing
             clothes={clothes}
             key={item.id}
@@ -69,7 +96,32 @@ function App() {
             onClickBookmark={handleBookmark}
           />
         ))}
-      </StyledMain>
+
+      {currentPage === 'categories' && (
+        <>
+          <Categories
+            onNavigate={handleNavigation}
+            uniqueCategories={uniqueCategories}
+            onAddCategories={addCategories}
+            onReset={categorieReset}
+          />
+          {filteredCategoriesClothes.map((item) => (
+            <Clothing
+              clothes={clothes}
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              color={item.color}
+              pattern={item.pattern}
+              material={item.material}
+              fitting={item.fitting}
+              imageUrl={item.imageUrl}
+              isBookmarked={item.isBookmarked}
+              onClickBookmark={handleBookmark}
+            />
+          ))}
+        </>
+      )}
     </>
   )
 }
