@@ -65,6 +65,8 @@ function NewEntry({ onNavigate, onNewEntry }) {
     }
 
     onNewEntry(newEntry)
+    form.reset()
+    alert('Dein Eintrag wurde gespeichert')
   }
 
   return (
