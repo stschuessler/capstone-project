@@ -70,41 +70,41 @@ function NewEntry({ onNavigate, onNewEntry }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <StyledContainer>
-        <StyledLabel>
+        <StyledTextLabel>
           Gib einen Namen für dein Kleidungsstück ein:
-          <StyledInput type="text" name="title" required autoComplete="Off" />
-        </StyledLabel>
-      </StyledContainer>
+          <StyledTextInput
+            type="text"
+            name="title"
+            required
+            autoComplete="Off"
+          />
+        </StyledTextLabel>
+        <br />
 
-      <StyledContainer>
-        <StyledLabel>
+        <StyledTextLabel>
           Zu welcher Kategorie soll das Kleidungsstück hinzugefügt werden?
-          <StyledInput
+          <StyledTextInput
             type="text"
             name="category"
             required
             autoComplete="Off"
           />
-        </StyledLabel>
-      </StyledContainer>
+        </StyledTextLabel>
 
-      <StyledContainer>
-        <p>Farbe</p>
-        <StyledRadioButton>
+        <StyledRadioButtonWrapper>
+          <p>Farbe</p>
           {colorArray.map((color) => (
             <StyledLabel key={color}>
               {color}
               <StyledInput type="radio" name="color" value={color} required />
             </StyledLabel>
           ))}
-        </StyledRadioButton>
-      </StyledContainer>
+        </StyledRadioButtonWrapper>
 
-      <StyledContainer>
-        <p>Muster</p>
-        <StyledRadioButton>
+        <StyledRadioButtonWrapper>
+          <p>Muster</p>
           {patternArray.map((pattern) => (
             <StyledLabel key={pattern}>
               {pattern}
@@ -116,12 +116,10 @@ function NewEntry({ onNavigate, onNewEntry }) {
               />
             </StyledLabel>
           ))}
-        </StyledRadioButton>
-      </StyledContainer>
+        </StyledRadioButtonWrapper>
 
-      <StyledContainer>
-        <p>Material</p>
-        <StyledRadioButton>
+        <StyledRadioButtonWrapper>
+          <p>Material</p>
           {materialArray.map((material) => (
             <StyledLabel key={material}>
               {material}
@@ -133,12 +131,10 @@ function NewEntry({ onNavigate, onNewEntry }) {
               />
             </StyledLabel>
           ))}
-        </StyledRadioButton>
-      </StyledContainer>
+        </StyledRadioButtonWrapper>
 
-      <StyledContainer>
-        <p>Passform</p>
-        <StyledRadioButton>
+        <StyledRadioButtonWrapper>
+          <p>Passform</p>
           {fittingArray.map((fitting) => (
             <StyledLabel key={fitting}>
               {fitting}
@@ -150,38 +146,55 @@ function NewEntry({ onNavigate, onNewEntry }) {
               />
             </StyledLabel>
           ))}
-        </StyledRadioButton>
+        </StyledRadioButtonWrapper>
       </StyledContainer>
 
-      <StyledContainer>
+      {/* <StyledContainer>
         <p>Image Upload</p>
-      </StyledContainer>
+      </StyledContainer> */}
 
       <StyledSubmitButton>Eintrag erstellen</StyledSubmitButton>
       <StyledResetButton type="reset">Neue Auswahl</StyledResetButton>
       <StyledResetButton type="button" onClick={() => onNavigate('home')}>
         Abbrechen
       </StyledResetButton>
-    </form>
+    </StyledForm>
   )
 }
 
 export default NewEntry
+const StyledForm = styled.form``
 
 const StyledContainer = styled.div`
   padding: 6px;
+  background: var(--default-button-color);
 `
-const StyledRadioButton = styled.button`
+const StyledRadioButtonWrapper = styled.div`
   padding: 10px;
   background-color: transparent;
   border: none;
   text-align: left;
+  color: white;
+`
+const StyledTextLabel = styled.label`
+  color: white;
 `
 
 const StyledLabel = styled.label`
   padding: 10px;
   text-align: left;
+  color: white;
+  font-size: 15px;
+  white-space: nowrap;
 `
+
+const StyledTextInput = styled.input`
+  border-radius: 8px;
+  padding: 4px;
+  margin: 5px;
+  color: black;
+`
+
 const StyledInput = styled.input`
   padding: 10px;
   margin: 4px;
