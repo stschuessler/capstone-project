@@ -66,7 +66,7 @@ function App() {
 
   return (
     <>
-      <Header onNavigate={handleNavigation}></Header>
+      <Header onNavigate={handleNavigation} onReset={categorieReset}></Header>
 
       {currentPage === 'home' && (
         <StyledMain>
