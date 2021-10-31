@@ -17,7 +17,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
       pattern: pattern.value,
       material: material.value,
       fitting: fitting.value,
-      imageUrl: '/images/bluse-floral.png', // cloudinary einbinden
+      imageUrl: '/images/bluse-floral.png',
       isBookmarked: false,
     }
 
@@ -110,10 +110,6 @@ function NewEntry({ onNavigate, onNewEntry }) {
           ))}
         </StyledRadioButtonWrapper>
       </StyledContainer>
-
-      {/* <StyledContainer>
-        <p>Image Upload</p>
-      </StyledContainer> */}
 
       <StyledSubmitButton>Eintrag erstellen</StyledSubmitButton>
       <StyledResetButton type="reset">Neue Auswahl</StyledResetButton>
