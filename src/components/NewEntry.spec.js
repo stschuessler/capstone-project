@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import NewEntry from './NewEntry'
 import userEvent from '@testing-library/user-event'
 
@@ -6,56 +6,56 @@ describe('NewEntry', () => {
   it('has radio input fields with the expected text', () => {
     render(<NewEntry />)
 
-    const firstInputField = screen.getByDisplayValue('weiß')
-    const secondInputField = screen.getByDisplayValue('einfarbig')
-    const thirdInputField = screen.getByDisplayValue('Baumwolle')
-    const forthInputField = screen.getByDisplayValue('Figurbetont')
+    const colorSubcategory = screen.getByDisplayValue('weiß')
+    const patternSubcategory = screen.getByDisplayValue('einfarbig')
+    const materialSubcategory = screen.getByDisplayValue('Baumwolle')
+    const fittingSubcategory = screen.getByDisplayValue('Figurbetont')
 
-    expect(firstInputField).toBeInTheDocument()
-    expect(secondInputField).toBeInTheDocument()
-    expect(thirdInputField).toBeInTheDocument()
-    expect(forthInputField).toBeInTheDocument()
+    expect(colorSubcategory).toBeInTheDocument()
+    expect(patternSubcategory).toBeInTheDocument()
+    expect(materialSubcategory).toBeInTheDocument()
+    expect(fittingSubcategory).toBeInTheDocument()
   })
 
   it('has two input fields with the expected label-texts', () => {
     render(<NewEntry />)
 
-    const labelText1 = screen.getByLabelText(
+    const entryTitel = screen.getByLabelText(
       'Gib einen Namen für dein Kleidungsstück ein:',
     )
 
-    const labelText2 = screen.getByLabelText(
+    const entryCategory = screen.getByLabelText(
       'Zu welcher Kategorie soll das Kleidungsstück hinzugefügt werden?',
     )
 
-    expect(labelText1).toBeInTheDocument()
-    expect(labelText2).toBeInTheDocument()
+    expect(entryTitel).toBeInTheDocument()
+    expect(entryCategory).toBeInTheDocument()
   })
 
   it('has 2 input fields of the textbox type', () => {
     render(<NewEntry />)
 
-    const inputField = screen.getAllByRole('textbox')
+    const textboxType = screen.getAllByRole('textbox')
 
-    expect(inputField).toHaveLength(2)
+    expect(textboxType).toHaveLength(2)
   })
 
   it('has 32 input fields of the radio type', () => {
     render(<NewEntry />)
 
-    const inputField = screen.getAllByRole('radio')
+    const radioType = screen.getAllByRole('radio')
 
-    expect(inputField).toHaveLength(32)
+    expect(radioType).toHaveLength(32)
   })
 
   xit('has 34 input fields which are required', () => {
     render(<NewEntry />)
 
-    const inputFieldType1 = screen.getAllByRole('input')
-    const inputFieldType2 = screen.getAllByRole('radio')
+    const inputType = screen.getAllByRole('textbox')
+    const radioType = screen.getAllByRole('radio')
 
-    expect(inputFieldType1).toBeRequired()
-    expect(inputFieldType2).toBeRequired() // funktiniert nich bei Arrays
+    expect(inputType).toBeRequired()
+    expect(radioType).toBeRequired()
   })
 
   it('has three buttons', () => {
@@ -103,7 +103,6 @@ describe('NewEntry', () => {
     )
     userEvent.type(inputTitle, 'Lieblingspulli')
 
-    // const inputColor = screen.getByRole('radio', { name: 'gelb' })
     const inputColor = screen.getByRole('radio', { value: 'gelb' })
     userEvent.click(inputColor)
 
@@ -127,7 +126,7 @@ describe('NewEntry', () => {
       pattern: 'geblümt',
       material: 'Leinen',
       fitting: 'Oversize',
-      imageUrl: expect.any(String), // cloudinary einbinden
+      imageUrl: expect.any(String),
       isBookmarked: false,
     })
   })
