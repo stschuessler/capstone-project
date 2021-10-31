@@ -1,49 +1,6 @@
 import styled from 'styled-components/macro'
 import { nanoid } from 'nanoid'
-
-const colorArray = [
-  'weiß',
-  'schwarz',
-  'grün',
-  'gelb',
-  'blau',
-  'rosa',
-  'lila',
-  'pink',
-  'keine',
-]
-
-const patternArray = [
-  'einfarbig',
-  'geblümt',
-  'gemustert',
-  'gepunktet',
-  'gestreift',
-  'kariert',
-  'leopardenmuster',
-  'nadelstreifen',
-  'schlangenmuster',
-  'keine',
-]
-
-const materialArray = [
-  'Baumwolle',
-  'Denim',
-  'Leinen',
-  'Mesh',
-  'Satin',
-  'Seide',
-  'Spitze',
-  'Wolle',
-]
-
-const fittingArray = [
-  'Figurbetont',
-  'Loose Fit',
-  'Oversize',
-  'Regular Fit',
-  'Relaxed Fit',
-]
+import clothingSubcatgories from '../lib/newEntrySubcategories'
 
 function NewEntry({ onNavigate, onNewEntry }) {
   function handleSubmit(event) {
@@ -68,6 +25,11 @@ function NewEntry({ onNavigate, onNewEntry }) {
     form.reset()
     alert('Dein Eintrag wurde gespeichert')
   }
+
+  const colors = clothingSubcatgories.colors
+  const pattern = clothingSubcatgories.pattern
+  const material = clothingSubcatgories.material
+  const fitting = clothingSubcatgories.fitting
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -95,7 +57,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
 
         <StyledRadioButtonWrapper>
           <p>Farbe</p>
-          {colorArray.map((color) => (
+          {colors.map((color) => (
             <StyledLabel key={color}>
               {color}
               <StyledInput type="radio" name="color" value={color} required />
@@ -105,7 +67,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
 
         <StyledRadioButtonWrapper>
           <p>Muster</p>
-          {patternArray.map((pattern) => (
+          {pattern.map((pattern) => (
             <StyledLabel key={pattern}>
               {pattern}
               <StyledInput
@@ -120,7 +82,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
 
         <StyledRadioButtonWrapper>
           <p>Material</p>
-          {materialArray.map((material) => (
+          {material.map((material) => (
             <StyledLabel key={material}>
               {material}
               <StyledInput
@@ -135,7 +97,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
 
         <StyledRadioButtonWrapper>
           <p>Passform</p>
-          {fittingArray.map((fitting) => (
+          {fitting.map((fitting) => (
             <StyledLabel key={fitting}>
               {fitting}
               <StyledInput
