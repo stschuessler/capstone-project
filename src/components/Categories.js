@@ -11,7 +11,6 @@ function Categories({
     const form = event.target
 
     const elements = Object.values(form.elements) // Makes array from object
-    console.log(elements)
     const checkedElements = elements.filter((element) => element.checked)
     const selectedCategories = checkedElements.map((el) => el.value)
     const categories = [...new Set(selectedCategories)] // ...new Set allows to remove double entries

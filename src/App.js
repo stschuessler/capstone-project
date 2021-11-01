@@ -1,6 +1,7 @@
 import Clothing from './components/Clothing'
 import Header from './components/Header'
 import Categories from './components/Categories'
+import NewEntry from './components/NewEntry'
 import styled from 'styled-components/macro'
 import mockupData from './mockup-data'
 import { useState } from 'react'
@@ -35,6 +36,12 @@ function App() {
     saveToLocal('localClothing', newClothesArray)
   }
 
+  function addNewEntry(addEntry) {
+    const newEntry = [...clothes, addEntry]
+    setClothes(newEntry)
+    saveToLocal('localClothing', newEntry)
+  }
+
   const filteredClothes = clothes.filter(
     (garment) => garment.isBookmarked === true,
   )
@@ -59,7 +66,7 @@ function App() {
 
   return (
     <>
-      <Header onNavigate={handleNavigation}></Header>
+      <Header onNavigate={handleNavigation} onReset={categorieReset}></Header>
 
       {currentPage === 'home' && (
         <StyledMain>
@@ -121,6 +128,10 @@ function App() {
             />
           ))}
         </>
+      )}
+
+      {currentPage === 'create' && (
+        <NewEntry onNavigate={handleNavigation} onNewEntry={addNewEntry} />
       )}
     </>
   )
