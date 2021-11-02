@@ -1,147 +1,61 @@
-import Clothing from './components/Clothing'
-import Header from './components/Header'
-import Categories from './components/Categories'
-import NewEntry from './components/NewEntry'
+import ClothingApp from './ClothingApp'
+// import Kleiderschrank from './components/Kleiderschrank'
 import styled from 'styled-components/macro'
-import mockupData from './mockup-data'
 import { useState } from 'react'
-import saveToLocal from './lib/saveToLocal'
-import loadFromLocal from './lib/loadFromLocal'
-import filterAllCategories from './lib/filterAllCategories'
 
-function App() {
-  const [clothes, setClothes] = useState(() => {
-    if (!loadFromLocal('localClothing')) {
-      saveToLocal('localClothing', mockupData)
-    }
-    return loadFromLocal('localClothing')
-  })
-
-  const [currentPage, setCurrentPage] = useState('home')
-  const [categories, setCategories] = useState([])
-
-  const handleBookmark = (id) => {
-    const garment = clothes.find((card) => card.id === id)
-
-    const indexClothes = clothes.findIndex((card) => card.id === id)
-    const newClothesArray = [
-      ...clothes.slice(0, indexClothes),
-      {
-        ...garment,
-        isBookmarked: !garment.isBookmarked,
-      },
-      ...clothes.slice(indexClothes + 1),
-    ]
-    setClothes(newClothesArray)
-    saveToLocal('localClothing', newClothesArray)
-  }
-
-  function addNewEntry(addEntry) {
-    const newEntry = [...clothes, addEntry]
-    setClothes(newEntry)
-    saveToLocal('localClothing', newEntry)
-  }
-
-  const filteredClothes = clothes.filter(
-    (garment) => garment.isBookmarked === true,
-  )
-
-  function handleNavigation(page) {
-    setCurrentPage(page)
-  }
-
-  const filteredCategoriesClothes = clothes.filter((garment) =>
-    categories.includes(garment.category),
-  )
-
-  function addCategories(selectedCategories) {
-    setCategories(selectedCategories)
-  }
-
-  const uniqueCategories = filterAllCategories(clothes)
-
-  function categorieReset() {
-    setCategories([])
-  }
+function App(clothingApp) {
+  const [wardrobePicture, setWardrobePicture] = useState(true)
 
   return (
+    // <Kleiderschrank />
     <>
-      <Header onNavigate={handleNavigation} onReset={categorieReset}></Header>
-
-      {currentPage === 'home' && (
-        <StyledMain>
-          {clothes.map((item) => (
-            <Clothing
-              clothes={clothes}
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              color={item.color}
-              pattern={item.pattern}
-              material={item.material}
-              fitting={item.fitting}
-              imageUrl={item.imageUrl}
-              isBookmarked={item.isBookmarked}
-              onClickBookmark={handleBookmark}
-            />
-          ))}
-        </StyledMain>
+      <StyledWrapper>
+        {wardrobePicture && (
+          <StyledImage src="/images/kleiderschrank-farbig.svg" alt="" />
+        )}
+      </StyledWrapper>
+      {wardrobePicture && (
+        <StyledButton
+          onClick={() => {
+            setWardrobePicture(!wardrobePicture)
+          }}
+        >
+          Öffne deinen Kleiderschrank
+        </StyledButton>
       )}
-      {currentPage === 'favorites' &&
-        filteredClothes.map((item) => (
-          <Clothing
-            clothes={clothes}
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            color={item.color}
-            pattern={item.pattern}
-            material={item.material}
-            fitting={item.fitting}
-            imageUrl={item.imageUrl}
-            isBookmarked={item.isBookmarked}
-            onClickBookmark={handleBookmark}
-          />
-        ))}
-
-      {currentPage === 'categories' && (
-        <>
-          <Categories
-            onNavigate={handleNavigation}
-            uniqueCategories={uniqueCategories}
-            onAddCategories={addCategories}
-            onReset={categorieReset}
-          />
-          {filteredCategoriesClothes.map((item) => (
-            <Clothing
-              clothes={clothes}
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              color={item.color}
-              pattern={item.pattern}
-              material={item.material}
-              fitting={item.fitting}
-              imageUrl={item.imageUrl}
-              isBookmarked={item.isBookmarked}
-              onClickBookmark={handleBookmark}
-            />
-          ))}
-        </>
-      )}
-
-      {currentPage === 'create' && (
-        <NewEntry onNavigate={handleNavigation} onNewEntry={addNewEntry} />
-      )}
+      {!wardrobePicture && <ClothingApp data={clothingApp} />}
     </>
   )
 }
 
-const StyledMain = styled.main`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 2px 16px 2px 2px;
-  gap: 4px;
+export default App
+
+const StyledWrapper = styled.div`
+  position: relative;
+  /* margin: 10px 10px 60px 10px; */
 `
 
-export default App
+const StyledButton = styled.button`
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: ${({ wardrobePicture }) => (!wardrobePicture ? 'auto' : 'none')};
+  padding: 20px;
+  border: var(--default-border);
+  border-radius: 10px;
+  box-shadow: var(--default-shadow);
+  color: var(--default-button-color);
+  font-weight: bold;
+  :hover {
+    background-color: var(--default-button-color);
+    color: white;
+    font-weight: bold;
+  }
+`
+
+const StyledImage = styled.img`
+  max-width: 100%;
+  max-height: auto;
+  display: ${({ wardrobePicture }) => (!wardrobePicture ? 'block' : 'none')};
+`
