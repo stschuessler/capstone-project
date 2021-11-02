@@ -8,9 +8,9 @@ export default {
 
 const Template = (args) => <NewEntry {...args} />
 
-export const form = Template.bind({})
+export const Form = Template.bind({})
 
-form.argTypes = {
+Form.argTypes = {
   onNavigate: { action: 'clicked' },
   onNewEntry: { action: 'clicked' },
 }
