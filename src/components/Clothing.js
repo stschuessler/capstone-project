@@ -67,10 +67,9 @@ const StyledButton = styled.button`
 
 const StyledImage = styled.img`
   width: 100%;
-  border: var(--default-border);
+  border: solid 3px white;
   border-radius: 10px;
   box-shadow: var(--default-shadow);
-  padding: 2px;
 `
 
 const StyledWrapper = styled.div`

@@ -17,7 +17,7 @@ function Categories({
     onAddCategories(categories)
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <div>
         {uniqueCategories.map((category) => (
           <StyledLabel key={category}>
@@ -35,14 +35,21 @@ function Categories({
           Abbrechen
         </StyledButton>
       </div>
-    </form>
+    </StyledForm>
   )
 }
 
 export default Categories
 
+const StyledForm = styled.form`
+  /* position: fixed;
+  z-index: 2;
+  background-color: white; */
+`
+
 const StyledLabel = styled.label`
   padding: 10px;
+  white-space: nowrap;
 `
 
 const StyledInput = styled.input`

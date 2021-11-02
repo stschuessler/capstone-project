@@ -14,13 +14,18 @@ const GlobalStyles = createGlobalStyle`
   	--default-border: solid 0.1px rgba( 0,0,0,0.2);
   	--default-shadow: 2px 2px 2px 1px rgba(0,0,0,0.2);
 	--default-button-color: rgb(85, 27, 33, 52);
-
+	--bordeaux-color: rgb(85, 27, 33, 52);
 }
 
+#root {
+	height: 100%;
+	position: relative;
+}
 
 body {
 	height: 100vh;
 	width: 100%;
 	}
+	
 `
 export default GlobalStyles
