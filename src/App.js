@@ -8,7 +8,7 @@ function App(clothingApp) {
   return (
     <>
       <StyledWrapper>
-        {wardrobePicture && <StyledImage src="/images/final.svg" alt="" />}
+        {wardrobePicture && <StyledImage src="/images/wardrobe.svg" alt="" />}
 
         {wardrobePicture && (
           <StyledButton
