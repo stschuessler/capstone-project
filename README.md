@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Digitaler Kleiderschrank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app helps you to remember what wonderful garments are hidden in your wardrobe.
 
-## Available Scripts
+This App is the capstone-project of my web development bootcamp @neuefische and is optimized for mobile usage only.
 
-In the project directory, you can run:
+Stay tuned to see the development within the next weeks 💻
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[Have a look a Kleiderschrank on Vercel](http://capstone-project-liard-two.vercel.app/) 👀
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshots
 
-### `npm run build`
+<img width="200" alt="startpage" src="public/images/app-picture-1.png">
+<img width="200" alt="favorites" src="public/images/app-picture-3.png">
+<img width="200" alt="details" src="public/images/app-picture-4.png">
+<img width="200" alt="categories" src="public/images/app-picture-5.png">
+<img width="200" alt="new-entry" src="public/images/app-picture-6.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- React Hooks
+- PropTypes
+- Styled Components
+- Storybook
+- React Testing Library
+- localStorage
+- npm
+- Git Workflow
+- Vercel
+- Figma
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Project setup
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Clone this repository.
+- Install all npm dependencies: `npm install`
+- To run the app in development mode: `npm start`, then open [http://localhost:3000](http://localhost:3000) to view it in the browser
+- To run Storybook: `npm run storybook`
+- To run unit and component tests: `npm test`
+- To create a build ready for deploying: `npm run build`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Acknowledgements
 
-## Learn More
+Many thanks to my "Klammerfische"-Group, our great coaches and the neuefische team! Thank you for all the support, the wonderful team spirit and the unforgettable time with you.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Catch me if you can
 
-### Code Splitting
+With many thanks to Lars for our own team logo <img width="30" alt="startpage" src="public/images/klammerfisch.png">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Try to find it in our projects ^^
