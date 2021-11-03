@@ -49,6 +49,8 @@ const StyledWrapper = styled.div`
   color: white;
   border-radius: 10px;
   box-shadow: var(--default-shadow);
+  display: flex;
+  flex-wrap: wrap;
 `
 
 const StyledLabel = styled.label`
@@ -57,7 +59,7 @@ const StyledLabel = styled.label`
 `
 
 const StyledInput = styled.input`
-  margin: 10px;
+  margin-left: 10px;
 `
 
 const StyledButton = styled.button`

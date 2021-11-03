@@ -143,6 +143,13 @@ const StyledRadioButtonWrapper = styled.div`
   border: none;
   text-align: left;
   color: white;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  p {
+    display: block;
+    width: 100%;
+  }
 `
 const StyledTextLabel = styled.label`
   color: white;
@@ -156,6 +163,7 @@ const StyledRadioLabel = styled.label`
   font-size: 15px;
   white-space: nowrap;
   margin-right: 10px;
+  display: block;
 `
 
 const StyledTextInput = styled.input`
