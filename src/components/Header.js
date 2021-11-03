@@ -27,7 +27,7 @@ function Header({ onNavigate, onReset }) {
 export default Header
 
 const StyledButton = styled.button`
-  margin: 10px;
+  margin: 10px 17px 20px 17px;
   padding: 5px;
   border: var(--default-border);
   border-radius: 10px;
@@ -35,6 +35,8 @@ const StyledButton = styled.button`
   color: var(--default-button-color);
   font-weight: bold;
   :hover {
+    border: var(--activ-button-border);
+
     background-color: var(--default-button-color);
     color: white;
     font-weight: bold;
@@ -51,6 +53,7 @@ const StyledButtonEntries = styled.button`
   color: var(--default-button-color);
   font-weight: bold;
   :hover {
+    border: var(--activ-button-border);
     background-color: var(--default-button-color);
     color: white;
     font-weight: bold;

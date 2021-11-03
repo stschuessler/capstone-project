@@ -18,14 +18,14 @@ function Categories({
   }
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <div>
+      <StyledWrapper>
         {uniqueCategories.map((category) => (
           <StyledLabel key={category}>
             {category}
             <StyledInput type="checkbox" name={category} value={category} />
           </StyledLabel>
         ))}
-      </div>
+      </StyledWrapper>
       <div>
         <StyledButton>Auswahl anzeigen</StyledButton>
         <StyledButton type="reset" value="Reset" onClick={() => onReset()}>
@@ -41,10 +41,14 @@ function Categories({
 
 export default Categories
 
-const StyledForm = styled.form`
-  /* position: fixed;
-  z-index: 2;
-  background-color: white; */
+const StyledForm = styled.form``
+
+const StyledWrapper = styled.div`
+  background-color: var(--bordeaux-color);
+  margin: 10px 5px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: var(--default-shadow);
 `
 
 const StyledLabel = styled.label`
@@ -57,7 +61,7 @@ const StyledInput = styled.input`
 `
 
 const StyledButton = styled.button`
-  margin: 10px;
+  margin: 6px;
   padding: 5px;
   border: var(--default-border);
   border-radius: 10px;

@@ -32,10 +32,10 @@ function Clothing({
       {showDetails && (
         <StyledWrapper>
           <h2>{title}</h2>
-          <p>Farbe: {color}</p>
-          <p>Muster: {pattern}</p>
-          <p>Material: {material}</p>
-          <p>Passform: {fitting}</p>
+          <StyledP>Farbe: {color}</StyledP>
+          <StyledP>Muster: {pattern}</StyledP>
+          <StyledP>Material: {material}</StyledP>
+          <StyledP>Passform: {fitting}</StyledP>
         </StyledWrapper>
       )}
     </StyledSection>
@@ -73,12 +73,18 @@ const StyledImage = styled.img`
 `
 
 const StyledWrapper = styled.div`
-  border: var(--default-border);
+  border: solid 1px white;
   border-radius: 10px;
   box-shadow: var(--default-shadow);
-  padding: 2px;
-  margin: 2px;
+  padding: 10px;
+  margin: 12px 2px;
   text-align: center;
+  background-color: var(--bordeaux-color);
+  color: white;
+`
+
+const StyledP = styled.p`
+  padding: 2px;
 `
 
 export default Clothing

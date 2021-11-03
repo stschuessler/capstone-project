@@ -69,7 +69,7 @@ function ClothingApp() {
       <StyledTitel id="titel">Kleiderschrank</StyledTitel>
 
       <Header onNavigate={handleNavigation} onReset={categorieReset}></Header>
-
+      <StyledLine />
       {currentPage === 'home' && (
         <>
           <StyledSubTitel id="pageSubTitel">
@@ -163,25 +163,17 @@ function ClothingApp() {
   )
 }
 
+const StyledLine = styled.hr`
+  background-color: var(--bordeaux-color);
+  height: 5px;
+  margin: 0px 5px;
+`
 const StyledTitel = styled.h1`
   text-align: center;
   background-color: var(--bordeaux-color);
   padding: 10px;
   color: white;
   margin: 5px;
-  /* position: fixed;
-  z-index: 2;
-  background-color: white; */
-  /* border: solid 10px white; */
-`
-const StyledMain = styled.main`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  background-color: white;
-  /* padding: 10px 10px 0px 10px; */
-  /* border-right: solid 5px white;
-  border-left: solid 5px white; */
 `
 
 const StyledSubTitel = styled.h2`
@@ -189,16 +181,13 @@ const StyledSubTitel = styled.h2`
   background-color: var(--bordeaux-color);
   padding: 10px;
   color: white;
-  margin: 5px;
+  margin: 20px 5px 5px 5px;
 `
 
 const StyledSelection = styled.section`
   gap: 4px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* ::-webkit-scrollbar {
-    display: none;
-  } */
 `
 
 const StyledLink = styled.a`

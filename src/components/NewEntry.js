@@ -17,13 +17,13 @@ function NewEntry({ onNavigate, onNewEntry }) {
       pattern: pattern.value,
       material: material.value,
       fitting: fitting.value,
-      imageUrl: '/images/bluse-floral.png',
+      imageUrl: '/images/IMG_1280.JPG',
       isBookmarked: false,
     }
 
     onNewEntry(newEntry)
     form.reset()
-    alert('Dein Eintrag wurde gespeichert')
+    // alert('Dein Eintrag wurde gespeichert')
   }
 
   const colors = clothingSubcatgories.colors
@@ -35,7 +35,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
     <StyledForm onSubmit={handleSubmit}>
       <StyledContainer>
         <StyledTextLabel>
-          Gib einen Namen für dein Kleidungsstück ein:
+          Benenne dein Kleidungsstück:
           <StyledTextInput
             type="text"
             name="title"
@@ -46,7 +46,7 @@ function NewEntry({ onNavigate, onNewEntry }) {
         <br />
 
         <StyledTextLabel>
-          Zu welcher Kategorie soll das Kleidungsstück hinzugefügt werden?
+          Benenne eine Kategorie:
           <StyledTextInput
             type="text"
             name="category"
@@ -58,55 +58,60 @@ function NewEntry({ onNavigate, onNewEntry }) {
         <StyledRadioButtonWrapper>
           <p>Farbe</p>
           {colors.map((color) => (
-            <StyledLabel key={color}>
+            <StyledRadioLabel key={color}>
               {color}
-              <StyledInput type="radio" name="color" value={color} required />
-            </StyledLabel>
+              <StyledRadioInput
+                type="radio"
+                name="color"
+                value={color}
+                required
+              />
+            </StyledRadioLabel>
           ))}
         </StyledRadioButtonWrapper>
 
         <StyledRadioButtonWrapper>
           <p>Muster</p>
           {pattern.map((pattern) => (
-            <StyledLabel key={pattern}>
+            <StyledRadioLabel key={pattern}>
               {pattern}
-              <StyledInput
+              <StyledRadioInput
                 type="radio"
                 name="pattern"
                 value={pattern}
                 required
               />
-            </StyledLabel>
+            </StyledRadioLabel>
           ))}
         </StyledRadioButtonWrapper>
 
         <StyledRadioButtonWrapper>
           <p>Material</p>
           {material.map((material) => (
-            <StyledLabel key={material}>
+            <StyledRadioLabel key={material}>
               {material}
-              <StyledInput
+              <StyledRadioInput
                 type="radio"
                 name="material"
                 value={material}
                 required
               />
-            </StyledLabel>
+            </StyledRadioLabel>
           ))}
         </StyledRadioButtonWrapper>
 
         <StyledRadioButtonWrapper>
           <p>Passform</p>
           {fitting.map((fitting) => (
-            <StyledLabel key={fitting}>
+            <StyledRadioLabel key={fitting}>
               {fitting}
-              <StyledInput
+              <StyledRadioInput
                 type="radio"
                 name="fitting"
                 value={fitting}
                 required
               />
-            </StyledLabel>
+            </StyledRadioLabel>
           ))}
         </StyledRadioButtonWrapper>
       </StyledContainer>
@@ -121,11 +126,16 @@ function NewEntry({ onNavigate, onNewEntry }) {
 }
 
 export default NewEntry
-const StyledForm = styled.form``
+const StyledForm = styled.form`
+  margin-top: 10px;
+`
 
 const StyledContainer = styled.div`
-  padding: 6px;
-  background: var(--default-button-color);
+  padding: 20px 6px;
+  background: var(--bordeaux-color);
+  margin: 0px 5px;
+  border-radius: 10px;
+  box-shadow: var(--default-shadow);
 `
 const StyledRadioButtonWrapper = styled.div`
   padding: 10px;
@@ -136,29 +146,33 @@ const StyledRadioButtonWrapper = styled.div`
 `
 const StyledTextLabel = styled.label`
   color: white;
+  margin-left: 6px;
+  padding: 2px;
 `
 
-const StyledLabel = styled.label`
-  padding: 10px;
+const StyledRadioLabel = styled.label`
   text-align: left;
   color: white;
   font-size: 15px;
   white-space: nowrap;
+  margin-right: 10px;
 `
 
 const StyledTextInput = styled.input`
   border-radius: 8px;
-  padding: 4px;
-  margin: 5px;
-  color: black;
+  width: 330px;
+  height: 30px;
+  padding: 6px;
+  margin: 6px;
+  color: var(--bordeaux-color);
 `
 
-const StyledInput = styled.input`
+const StyledRadioInput = styled.input`
   padding: 10px;
   margin: 4px;
 `
 const StyledSubmitButton = styled.button`
-  margin: 10px;
+  margin: 9px;
   padding: 5px;
   border: var(--default-border);
   border-radius: 10px;
@@ -166,6 +180,7 @@ const StyledSubmitButton = styled.button`
   color: var(--default-button-color);
   font-weight: bold;
   :hover {
+    border: var(--activ-button-border);
     background-color: var(--default-button-color);
     color: white;
     font-weight: bold;
@@ -181,6 +196,7 @@ const StyledResetButton = styled.button`
   color: var(--default-button-color);
   font-weight: bold;
   :hover {
+    border: var(--activ-button-border);
     background-color: var(--default-button-color);
     color: white;
     font-weight: bold;
