@@ -32,10 +32,10 @@ function Clothing({
       {showDetails && (
         <StyledWrapper>
           <h2>{title}</h2>
-          <StyledP>Farbe: {color}</StyledP>
-          <StyledP>Muster: {pattern}</StyledP>
-          <StyledP>Material: {material}</StyledP>
-          <StyledP>Passform: {fitting}</StyledP>
+          <p>Farbe: {color}</p>
+          <p>Muster: {pattern}</p>
+          <p>Material: {material}</p>
+          <p>Passform: {fitting}</p>
         </StyledWrapper>
       )}
     </StyledSection>
@@ -81,10 +81,9 @@ const StyledWrapper = styled.div`
   text-align: center;
   background-color: var(--bordeaux-color);
   color: white;
-`
-
-const StyledP = styled.p`
-  padding: 2px;
+  p {
+    padding: 2px;
+  }
 `
 
 export default Clothing

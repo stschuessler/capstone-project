@@ -3,24 +3,24 @@ import styled from 'styled-components/macro'
 import { useState } from 'react'
 
 function App(clothingApp) {
-  const [wardrobePicture, setWardrobePicture] = useState(true)
+  const [homeScreen, setHomeScreen] = useState(true)
 
   return (
     <>
       <StyledWrapper>
-        {wardrobePicture && <StyledImage src="/images/wardrobe.svg" alt="" />}
+        {homeScreen && <StyledImage src="/images/wardrobe.svg" alt="" />}
 
-        {wardrobePicture && (
+        {homeScreen && (
           <StyledButton
             onClick={() => {
-              setWardrobePicture(!wardrobePicture)
+              setHomeScreen(!homeScreen)
             }}
           >
             Öffne deinen Kleiderschrank
           </StyledButton>
         )}
       </StyledWrapper>
-      {!wardrobePicture && <ClothingApp data={clothingApp} />}
+      {!homeScreen && <ClothingApp data={clothingApp} />}
     </>
   )
 }
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
   position: absolute;
   bottom: 296px;
   right: 35px;
-  display: ${({ wardrobePicture }) => (!wardrobePicture ? 'auto' : 'none')};
+  display: ${({ homeScreen }) => (!homeScreen ? 'auto' : 'none')};
   padding: 10px;
   border-radius: 10px;
   box-shadow: var(--default-shadow);
@@ -55,5 +55,5 @@ const StyledButton = styled.button`
 const StyledImage = styled.img`
   max-width: 100%;
   max-height: auto;
-  display: ${({ wardrobePicture }) => (!wardrobePicture ? 'block' : 'none')};
+  display: ${({ homeScreen }) => (!homeScreen ? 'block' : 'none')};
 `
