@@ -17,15 +17,15 @@ function Categories({
     onAddCategories(categories)
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <StyledForm onSubmit={handleSubmit}>
+      <StyledWrapper>
         {uniqueCategories.map((category) => (
           <StyledLabel key={category}>
             {category}
             <StyledInput type="checkbox" name={category} value={category} />
           </StyledLabel>
         ))}
-      </div>
+      </StyledWrapper>
       <div>
         <StyledButton>Auswahl anzeigen</StyledButton>
         <StyledButton type="reset" value="Reset" onClick={() => onReset()}>
@@ -35,22 +35,35 @@ function Categories({
           Abbrechen
         </StyledButton>
       </div>
-    </form>
+    </StyledForm>
   )
 }
 
 export default Categories
 
+const StyledForm = styled.form``
+
+const StyledWrapper = styled.div`
+  background-color: var(--bordeaux-color);
+  margin: 10px 5px;
+  color: white;
+  border-radius: 10px;
+  box-shadow: var(--default-shadow);
+  display: flex;
+  flex-wrap: wrap;
+`
+
 const StyledLabel = styled.label`
   padding: 10px;
+  white-space: nowrap;
 `
 
 const StyledInput = styled.input`
-  margin: 10px;
+  margin-left: 10px;
 `
 
 const StyledButton = styled.button`
-  margin: 10px;
+  margin: 6px;
   padding: 5px;
   border: var(--default-border);
   border-radius: 10px;

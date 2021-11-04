@@ -67,19 +67,23 @@ const StyledButton = styled.button`
 
 const StyledImage = styled.img`
   width: 100%;
-  border: var(--default-border);
+  border: solid 3px white;
   border-radius: 10px;
   box-shadow: var(--default-shadow);
-  padding: 2px;
 `
 
 const StyledWrapper = styled.div`
-  border: var(--default-border);
+  border: solid 1px white;
   border-radius: 10px;
   box-shadow: var(--default-shadow);
-  padding: 2px;
-  margin: 2px;
+  padding: 10px;
+  margin: 12px 2px;
   text-align: center;
+  background-color: var(--bordeaux-color);
+  color: white;
+  p {
+    padding: 2px;
+  }
 `
 
 export default Clothing

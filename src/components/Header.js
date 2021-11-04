@@ -8,9 +8,9 @@ function Header({ onNavigate, onReset }) {
 
   return (
     <>
-      <StyledButton onClick={() => callClickEvent('home')}>
+      <StyledButtonEntries onClick={() => callClickEvent('home')}>
         Alle Einträge
-      </StyledButton>
+      </StyledButtonEntries>
       <StyledButton onClick={() => callClickEvent('favorites')}>
         Favoriten
       </StyledButton>
@@ -27,7 +27,7 @@ function Header({ onNavigate, onReset }) {
 export default Header
 
 const StyledButton = styled.button`
-  margin: 10px;
+  margin: 10px 17px 20px 17px;
   padding: 5px;
   border: var(--default-border);
   border-radius: 10px;
@@ -35,6 +35,25 @@ const StyledButton = styled.button`
   color: var(--default-button-color);
   font-weight: bold;
   :hover {
+    border: var(--activ-button-border);
+
+    background-color: var(--default-button-color);
+    color: white;
+    font-weight: bold;
+  }
+`
+
+const StyledButtonEntries = styled.button`
+  display: block;
+  margin: 10px;
+  padding: 5px 130px 5px 130px;
+  border: var(--default-border);
+  border-radius: 10px;
+  box-shadow: var(--default-shadow);
+  color: var(--default-button-color);
+  font-weight: bold;
+  :hover {
+    border: var(--activ-button-border);
     background-color: var(--default-button-color);
     color: white;
     font-weight: bold;

@@ -4,9 +4,9 @@ function Bookmark({ id, isBookmarked, onClickBookmark }) {
   return (
     <StyledButton onClick={() => onClickBookmark(id)}>
       {!isBookmarked ? (
-        <img src="/images/bookmark.png" alt="Bookmark clothing" />
+        <img src="/images/heart-border.png" alt="Bookmark clothing" />
       ) : (
-        <img src="/images/bookmark-active.png" alt="Remove bookmark" />
+        <img src="/images/heart-filled.png" alt="Remove bookmark" />
       )}
     </StyledButton>
   )
